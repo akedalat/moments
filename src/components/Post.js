@@ -23,7 +23,7 @@ import { Header, Image, Button, Icon, Label} from 'semantic-ui-react'
                                 </div>
                             </div>
 
-                            <div>
+                            <div id="like-btn">
                             <Button as='div' labelPosition='right'>
                             <Button color='red'>
                                 <Icon name='heart' />
@@ -34,12 +34,19 @@ import { Header, Image, Button, Icon, Label} from 'semantic-ui-react'
                             </Label>
                             </Button>
                             </div>
+                            
                             <div className="Post-caption">
                                 <strong>{this.props.currentUser.name}</strong> {this.props.currentUser.caption}
+                            </div>
+
+                            <div className="Comments">
+                               <ul>
+                                <li>Comments</li>
+                                </ul> 
                             </div>
 
                     </article>;
             }
         }
-        
+
     export default Post;

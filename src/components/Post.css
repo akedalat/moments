@@ -7,7 +7,9 @@
     border-radius: 3px;
     border: 1px solid #e6e6e6;
     background-color: #fff;
-    margin: 15% 20% 20% 20%;
+    margin: auto;
+    width: 50%;
+    margin-top: 10%;
 
   }
    .Post-user {
@@ -17,6 +19,7 @@
     }
           .Post-user-name {
             font-family: Helvetica, 'PT Sans', sans-serif !important;
+            font-size: 1.5vw !important;
           } 
 
       .Post-image-bg {
@@ -31,6 +34,22 @@
       .Post-caption {
         padding: 16px 16px;
         font-weight: normal;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      .Search {
+        width: 5px;
+        margin: auto;
+        padding: 10px;
+      }
+
+      #like-btn {
+        padding: 10px !important;
+
+       
       }
 
      
