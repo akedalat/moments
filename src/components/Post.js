@@ -25,23 +25,23 @@ import { Header, Image, Button, Icon, Label} from 'semantic-ui-react'
 
                             <div id="like-btn">
                             <Button as='div' labelPosition='right'>
-                            <Button color='red'>
+                            <Button color='lightgrey'>
                                 <Icon name='heart' />
                                 Like
                             </Button>
-                            <Label as='a' basic color='red' pointing='left'>
+                            <Label as='a' basic color='black' pointing='left'>
                                 2,048
                             </Label>
                             </Button>
                             </div>
-                            
+
                             <div className="Post-caption">
                                 <strong>{this.props.currentUser.name}</strong> {this.props.currentUser.caption}
                             </div>
 
                             <div className="Comments">
                                <ul>
-                                <li>Comments</li>
+                                <li>View All 0 Comments</li>
                                 </ul> 
                             </div>
 
