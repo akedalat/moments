@@ -10,8 +10,8 @@ import { Header, Image, Button, Icon, Label} from 'semantic-ui-react'
                       
                             <div className="Post-user">
                             <Header className="Post-user-name" as='h2'>
-                            <Image circular src={this.props.currentUser.avatar} />
-                            {this.props.currentUser.name}
+                            <Image circular src={this.props.post.user.avatar} />
+                            {this.props.post.user.name}
                             </Header>
                             </div>
 
@@ -19,24 +19,19 @@ import { Header, Image, Button, Icon, Label} from 'semantic-ui-react'
 
                             <div className="Post-image">
                                 <div className="Post-image-bg">
-                                <img alt="Image not showing for some reasons!" src={this.props.image} />
+                                <img alt="Image not showing for some reasons!" src={this.props.post.image} />
                                 </div>
                             </div>
 
-                            <div id="like-btn">
-                            <Button as='div' labelPosition='right'>
-                            <Button color='lightgrey'>
+                            <div id="like-btn-div">
+                            <Button id="like-btn" color='grey'>
                                 <Icon name='heart' />
                                 Like
-                            </Button>
-                            <Label as='a' basic color='black' pointing='left'>
-                                2,048
-                            </Label>
                             </Button>
                             </div>
 
                             <div className="Post-caption">
-                                <strong>{this.props.currentUser.name}</strong> {this.props.currentUser.caption}
+                                <strong>{this.props.post.user.name}</strong> {this.props.post.caption}
                             </div>
 
                             <div className="Comments">
