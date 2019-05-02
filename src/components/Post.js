@@ -1,20 +1,21 @@
 import React from "react";
 import './Post.css'
-import { Header, Image, Button, Icon, Label} from 'semantic-ui-react'
+import { Header, Image, Button, Icon} from 'semantic-ui-react'
 
     class Post extends React.Component{
+        handleclick = () => {
+            this.props.handleProfileClicked(this.props.post.user.id)
+        }
         render() {
             return <article className="Post" ref="Post">
 
                         <header>
-                      
                             <div className="Post-user">
-                            <Header className="Post-user-name" as='h2'>
+                            <Header onClick={this.handleclick} className="Post-user-name" as='h2'>
                             <Image circular src={this.props.post.user.avatar} />
                             {this.props.post.user.name}
                             </Header>
                             </div>
-
                         </header>
 
                             <div className="Post-image">

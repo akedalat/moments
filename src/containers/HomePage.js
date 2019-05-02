@@ -6,11 +6,21 @@ class HomePage extends React.Component{
 
     state = {
         users: [],
-        posts: []
+        user: [],
+        posts: [],
+        profileClicked: false
     }
 
-    //GET USERS
+    //GET POSTS & USERS
     componentDidMount = () => {
+        fetch("http://localhost:3000/posts")
+        .then(resp => resp.json())
+        .then(posts => {
+            this.setState({
+                posts: posts
+            })
+        })
+
         fetch("http://localhost:3000/users")
         .then(resp => resp.json())
         .then(users => {
@@ -20,20 +30,23 @@ class HomePage extends React.Component{
         })
     }
 
-    //GET POSTS
-    componentDidMount = () => {
-        fetch("http://localhost:3000/posts")
-        .then(resp => resp.json())
-        .then(posts => {
-            this.setState({
-                posts: posts
-            })
+    handleProfileClicked = (id) => {
+        this.setState({
+            profileClicked: true, 
+            user: this.state.users.find(user => id === user.id)
         })
     }
 
     render(){
     return <React.Fragment>
-            <PostList users={this.state.users} posts={this.state.posts}/>
+        {this.state.profileClicked ? 
+            <ProfileContainer 
+            users={this.state.users}
+            user={this.state.user}/> :
+            <PostList 
+            users={this.state.users} 
+            posts={this.state.posts}
+            handleProfileClicked={this.handleProfileClicked}/>}
         </React.Fragment>
     }
 

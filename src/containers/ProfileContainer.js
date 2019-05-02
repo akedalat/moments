@@ -5,9 +5,8 @@ import Profile from '../components/Profile'
 class ProfileContainer extends React.Component{
 
     render(){
-  
     return <React.Fragment>Profile Container
-        <Profile/>
+        <Profile user={this.props.user}/>
     </React.Fragment> 
 
     }
