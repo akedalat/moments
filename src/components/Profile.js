@@ -1,47 +1,32 @@
 import React from "react";
-import { Header, Image, Button, Icon} from 'semantic-ui-react'
+import './Profile.css'
+import { Header, Image, Button} from 'semantic-ui-react'
 
 class Profile extends React.Component{
 
     render(){
     return <React.Fragment>Profile
-        <article className="Post" ref="Post">
+    <div className="Profile-container" ref="Post">   
 
-<header>
+        <header className="Header">
+            <div>
+            <Header className="Profile-name" as='h2'>
+            <Image circular src={this.props.user.avatar} />
+            {this.props.user.name}
+            </Header>
+            </div>
+            <div className="Edit">
+            <Button color='gray'>Edit Profile</Button>
+            </div>
+        </header>
 
-    <div className="Post-user">
-    <Header className="Post-user-name" as='h2'>
-    <Image circular src={this.props.user.avatar} />
-    {this.props.user.name}
-    </Header>
-    </div>
-
-</header>
-
-    <div className="Post-image">
-        <div className="Post-image-bg">
-        <img alt="Image not showing for some reasons!" src="" />
+        <div className="Profile-info">
+            <div>{this.props.user.posts.length} Posts</div>
+            <div>{this.props.user.followers.length} Followers</div>
+            <div>{this.props.user.following.length} Following</div>
         </div>
-    </div>
-
-    <div id="like-btn-div">
-    <Button id="like-btn" color='grey'>
-        <Icon name='heart' />
-        Like
-    </Button>
-    </div>
-
-    <div className="Post-caption">
-        <strong>{this.props.user.name}</strong> caption
-    </div>
-
-    <div className="Comments">
-       <ul>
-        <li>View All 0 Comments</li>
-        </ul> 
-    </div>
-
-</article>;
+        
+    </div>;
     </React.Fragment> 
 
     }
