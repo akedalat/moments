@@ -1,12 +1,12 @@
 import React from "react";
 import './Profile.css'
-import { Header, Image, Button} from 'semantic-ui-react'
+import { Header, Image, Button, Grid} from 'semantic-ui-react'
 
 class Profile extends React.Component{
 
     render(){
     return <React.Fragment>Profile
-    <div className="Profile-container" ref="Post">   
+    <article className="Profile-container" ref="Post">   
 
         <header className="Header">
             <div>
@@ -21,12 +21,18 @@ class Profile extends React.Component{
         </header>
 
         <div className="Profile-info">
-            <div>{this.props.user.posts.length} Posts</div>
-            <div>{this.props.user.followers.length} Followers</div>
-            <div>{this.props.user.following.length} Following</div>
+            <span>{this.props.user.posts.length} Posts</span>
+            <span>{this.props.user.followers.length} Followers</span>
+            <span>{this.props.user.following.length} Following</span>
         </div>
+        <Grid>
+        <Grid.Row className="Grid-row" columns={3}>
+            {this.props.user.posts.map(post => {
+            return <Grid.Column><Image src={post.image}/></Grid.Column>})}  
+        </Grid.Row>
+        </Grid>
         
-    </div>;
+    </article>;
     </React.Fragment> 
 
     }

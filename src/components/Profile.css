@@ -9,20 +9,22 @@
     background-color: #fff;
     margin: auto;
     width: 50%;
-    margin-top: 10%;
+    margin-top: 8%;
   }
 
 .Header {
     display: flex;
-    padding: 16px;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 4%;
     align-items: center;
-    background-color: aquamarine;
     justify-content: space-between; 
+    background-color: #00b5ad;
 }
 
 .Profile-name {
 font-family: Helvetica, 'PT Sans', sans-serif !important;
 font-size: 1.5vw !important;
+color: #e6e6e6 !important;
 } 
 
 ul {
@@ -31,9 +33,13 @@ list-style-type: none;
 
 .Profile-info {
     display: flex;
-    padding: 16px;
+    padding: 3% 8% 3% 8%;
     justify-content: space-between;
+    border-bottom: 1px solid #e6e6e6;
 }
 
+.Grid-row {
+    padding: 5% !important;
+}
 
      
