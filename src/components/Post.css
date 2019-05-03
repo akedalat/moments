@@ -1,6 +1,5 @@
 * {
     font-family: Helvetica, 'PT Sans', sans-serif;
-    font-weight: bold;
 }
 
 .Post {
@@ -48,6 +47,10 @@
 
       #like-btn-div {
         padding: 10px !important;
+      }
+
+      li{
+        font-weight: normal;
       }
 
 

@@ -3,9 +3,17 @@ import './Post.css'
 import { Header, Image, Button, Icon} from 'semantic-ui-react'
 
     class Post extends React.Component{
+
         handleclick = () => {
             this.props.handleProfileClicked(this.props.post.user.id)
         }
+
+        renderComments = () => {
+            return this.props.post.comments.map(comment => {  
+               return <li><strong>{comment.user.name}</strong> {comment.content}</li>
+            })
+        }
+
         render() {
             return <article className="Post" ref="Post">
 
@@ -36,9 +44,7 @@ import { Header, Image, Button, Icon} from 'semantic-ui-react'
                             </div>
 
                             <div className="Comments">
-                               <ul>
-                                <li>View All 0 Comments</li>
-                                </ul> 
+                               <ul>Comments: {this.renderComments()}</ul> 
                             </div>
 
                     </article>;

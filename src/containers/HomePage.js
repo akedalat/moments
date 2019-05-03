@@ -39,7 +39,7 @@ class HomePage extends React.Component{
 
     render(){
     return <React.Fragment>
-        {this.state.profileClicked ? 
+            {this.state.profileClicked ? 
             <ProfileContainer 
             users={this.state.users}
             user={this.state.user}/> :
