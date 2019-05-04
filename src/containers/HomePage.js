@@ -2,6 +2,9 @@ import React from "react";
 import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
 
+const postsUrl = "http://localhost:3000/posts"
+const usersUrl = "http://localhost:3000/users"
+
 class HomePage extends React.Component{
 
     state = {
@@ -11,23 +14,39 @@ class HomePage extends React.Component{
         profileClicked: false
     }
 
+    fetchPosts = () => {
+        fetch(postsUrl)
+        .then(resp => resp.json())
+        .then(posts => this.setState({
+            posts: posts
+        }))
+    }
+
+    fetchUsers = () => {
+        fetch(usersUrl)
+        .then(resp => resp.json())
+        .then(users => this.setState({
+            users: users
+        }))
+    }
+
     //GET POSTS & USERS
     componentDidMount = () => {
-        fetch("http://localhost:3000/posts")
-        .then(resp => resp.json())
-        .then(posts => {
-            this.setState({
-                posts: posts
-            })
-        })
+     this.fetchPosts()
+     this.fetchUsers()
+    }
 
-        fetch("http://localhost:3000/users")
-        .then(resp => resp.json())
-        .then(users => {
-            this.setState({
-                users: users
-            })
-        })
+    //ADD COMMENT 
+    addComment = (comment, post_id) => {
+        console.log(`${postsUrl}/${post_id}/comments`)
+        fetch(`${postsUrl}/${post_id}/comments`,{
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json",},
+            body: JSON.stringify(comment),
+        }).then(resp => resp.json())
+        .then(this.fetchPosts)
     }
 
     handleProfileClicked = (id) => {
@@ -46,6 +65,7 @@ class HomePage extends React.Component{
             <PostList 
             users={this.state.users} 
             posts={this.state.posts}
+            addComment={this.addComment}
             handleProfileClicked={this.handleProfileClicked}/>}
         </React.Fragment>
     }

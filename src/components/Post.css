@@ -53,5 +53,11 @@
         font-weight: normal;
       }
 
+      .Comment {
+        width: 100% !important;
+      }
 
+      #Form {
+        padding: 1%;
+      }
      
