@@ -2,6 +2,7 @@ import React from "react";
 import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
 
+
 const postsUrl = "http://localhost:3000/posts"
 const usersUrl = "http://localhost:3000/users"
 

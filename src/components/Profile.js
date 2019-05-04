@@ -5,7 +5,7 @@ import { Header, Image, Button, Grid} from 'semantic-ui-react'
 class Profile extends React.Component{
 
     render(){
-    return <React.Fragment>Profile
+    return <React.Fragment>
     <article className="Profile-container" ref="Post">   
 
         <header className="Header">
