@@ -41,6 +41,7 @@ class SignupForm extends React.Component {
 	}
 
 	render(){
+        console.log(this.state)
 		return (
 			<Form className="authForm" onSubmit={this.handleSubmit}>
 		    <Form.Field>

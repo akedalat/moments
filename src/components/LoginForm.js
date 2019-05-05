@@ -23,15 +23,15 @@ class LoginForm extends React.Component {
 			},
 			body: JSON.stringify(this.state)
 		})
-		.then(res => res.json())
-        .then(res => {
-            if(res.errors){
+		.then(resp => resp.json())
+        .then(resp => {
+            if(resp.errors){
 				// If login failed
-				alert(res.errors)
+				alert(resp.errors)
 			} else {
 				// If login succeeded
-				//this.props.setCurrentUser(res)
-				console.log(res)
+				this.props.setCurrentUser(resp)
+				
 			} 
         })
         

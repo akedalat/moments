@@ -11,18 +11,34 @@ import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
 
-  
+  state = {
+    currentUser: null
+  }
+
+  setCurrentUser = (user) => {
+    this.setState({
+      currentUser: user
+    }, () => {
+      localStorage.setItem("user_id", this.state.currentUser.id)
+      this.props.history.push("/home")})
+  }
+
   render(){
   return <React.Fragment>
     <Header/>
-    <BrowserRouter>
+    {/* <BrowserRouter> */}
     <Switch>
-    <Route exact path="/" render={() => <HomePage/>}/>
-    <Route path="/login" component={LoginForm}/>
-    <Route path="/signup" component={SignUpForm}/>
-    <Route path="*" component={NotFound}/>
+  
+    <Route path="/login" render={(routerProps)=> <LoginForm
+    {...routerProps} setCurrentUser={this.setCurrentUser}/>}/>
+    
+    <Route path="/signup" render={(routerProps)=> <SignUpForm
+    {...routerProps} setCurrentUser={this.setCurrentUser}/>}/>
+    
+    <Route path="/home" render={() => <HomePage/>}/>
+    <Route path="*" render={() => <NotFound/>}/>
     </Switch>
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
     </React.Fragment>
   }
 }
