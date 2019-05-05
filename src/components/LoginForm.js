@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
 		    </Form.Field>
 		    <Button id="button" color="teal" type='submit'>Login</Button>
 				<Message>
-          New to us? <a href='#'>Sign Up</a>
+          New to us? <a href='/signup'>Sign Up</a>
         </Message>
 		  </Form>
 		)
