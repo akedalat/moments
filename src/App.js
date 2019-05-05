@@ -6,7 +6,7 @@ import NotFound from './components/NotFound'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 
-import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
 class App extends Component {
@@ -21,6 +21,23 @@ class App extends Component {
     }, () => {
       localStorage.setItem("user_id", this.state.currentUser.id)
       this.props.history.push("/home")})
+  }
+
+  componentDidMount = () => {
+    const userId = localStorage.getItem("user_id")
+
+    if (userId){
+      fetch("http://localhost:3000/auto_login", {
+        headers: {"Authorization": userId}
+      })
+      .then(resp => resp.json())
+      .then(resp => {
+        if (resp.errors){
+          alert(resp.errors)
+        } else {this.setCurrentUser(resp)}
+        }
+      )
+    }
   }
 
   render(){
