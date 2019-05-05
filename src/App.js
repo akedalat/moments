@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header'
 import HomePage from './containers/HomePage'
 import NotFound from './components/NotFound'
+import LoginForm from './components/LoginForm'
 
 import { BrowserRouter, Router, Route, Switch } from "react-router-dom";
 
@@ -15,6 +16,7 @@ class App extends Component {
     <BrowserRouter>
     <Switch>
     <Route exact path="/" render={() => <HomePage/>}/>
+    <Route path="/login" component={LoginForm}/>
     <Route path="*" component={NotFound}/>
     </Switch>
     </BrowserRouter>

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Message, Header } from 'semantic-ui-react'
+import './auth.css'
 
 class LoginForm extends React.Component {
 	state = {
@@ -29,7 +30,8 @@ class LoginForm extends React.Component {
 				alert(res.errors)
 			} else {
 				// If login succeeded
-				this.props.setCurrentUser(res)
+				//this.props.setCurrentUser(res)
+				console.log(res)
 			} 
         })
         
@@ -37,16 +39,22 @@ class LoginForm extends React.Component {
 
 	render(){
 		return (
-			<Form onSubmit={this.handleSubmit}>
+			<Form className="authForm" onSubmit={this.handleSubmit}>
+			 <Header as='h2' color='teal' textAlign='center'>
+          Log-in to your account
+        </Header>
 		    <Form.Field>
-		      <label>email</label>
+		      <label>Email</label>
 		      <input onChange={this.handleChange} name="email" type="email" value={this.state.email} placeholder='Email' />
 		    </Form.Field>
 		    <Form.Field>
 		      <label>Password</label>
 		      <input onChange={this.handleChange} name="password" type="password" value={this.state.password} placeholder='Password' />
 		    </Form.Field>
-		    <Button type='submit'>Submit</Button>
+		    <Button id="button" color="teal" type='submit'>Login</Button>
+				<Message>
+          New to us? <a href='#'>Sign Up</a>
+        </Message>
 		  </Form>
 		)
 	}
