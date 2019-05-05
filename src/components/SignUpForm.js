@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Button, Message } from 'semantic-ui-react'
+import { Form, Button, Message, Header } from 'semantic-ui-react'
 import './auth.css'
 
 class SignupForm extends React.Component {
@@ -44,6 +44,9 @@ class SignupForm extends React.Component {
         console.log(this.state)
 		return (
 			<Form className="authForm" onSubmit={this.handleSubmit}>
+            <Header as='h2' color='teal' textAlign='center'>
+            Thanks for joining, Hi5!
+            </Header>
 		    <Form.Field>
 		      <label>Name</label>
 		      <input onChange={this.handleChange} name="name" value={this.state.name} placeholder='name' />

@@ -20,7 +20,14 @@ class App extends Component {
       currentUser: user
     }, () => {
       localStorage.setItem("user_id", this.state.currentUser.id)
-      this.props.history.push("/home")})
+      this.props.history.push(this.props.location.pathname)})
+  }
+
+  logOut = () => {
+    localStorage.removeItem("user_id")
+    this.setState({
+      currentUser: null
+    }, () => this.props.history.push("/login"))
   }
 
   componentDidMount = () => {
@@ -42,7 +49,8 @@ class App extends Component {
 
   render(){
   return <React.Fragment>
-    <Header/>
+    <Header currentUser={this.state.currentUser}
+    logOut={this.logOut}/>
     {/* <BrowserRouter> */}
     <Switch>
   

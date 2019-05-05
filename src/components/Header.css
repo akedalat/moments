@@ -3,6 +3,13 @@
 
 
 
+.Menu {
+  width: 70%;
+  margin: auto !important;
+
+  z-index: 1;
+  }
+
 .Nav {
     background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -50,17 +57,13 @@
     justify-content: flex-end;
   }
 
-  .Menu {
-  width: 70%;
-  margin: auto !important;
-  }
 
   #header-profile {
     padding: 10%;
     height: 25%;
   }
 
-  #logout {
+  #log-btn {
   font-size: 1.5vw;
    padding: 10px;
   }

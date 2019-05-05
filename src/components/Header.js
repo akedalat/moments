@@ -1,8 +1,9 @@
 import React from "react";
-import './HeaderBar.css'
+import './Header.css'
+import {withRouter} from 'react-router-dom'
 import {Button, Menu, Icon} from 'semantic-ui-react'
 
-    class HeaderBar extends React.Component{
+    class Header extends React.Component{
         render(){
           return (
             <Menu className="Menu" size='massive'>
@@ -10,6 +11,7 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
             <Menu.Item className="Nav-brand-name" name='MOMENTS' />
          
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
+            {this.props.currentUser ?
             <Menu.Menu position='right'>
             <Menu.Item>
               <Icon name="add"/>Add Image
@@ -18,32 +20,23 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
               <Icon name="user"/>
             </Menu.Item>
               <Menu.Item>
-                <Button id="logout" color='teal'>logout</Button>
+                <Button onClick={this.props.logOut} id="log-btn" color='teal'>Logout</Button>
               </Menu.Item>
             </Menu.Menu>
+            : 
+            <Menu.Menu position='right'>
+
+              <Menu.Item>
+              <Button onClick={()=> this.props.history.push("/login")} id="log-btn" color='teal'>Login</Button>
+              </Menu.Item>
+              <Menu.Item>
+              <Button onClick={()=> this.props.history.push("/signup")} id="log-btn" color='pink'>Sign Up</Button>
+              </Menu.Item>
+            </Menu.Menu>
+          }
           </Menu>
            );
         }   
     }
-    export default HeaderBar;
 
-
-  //   <nav className="Nav">
-  //   <div className="Nav-menus">
-
-  //     <div className="Nav-brand">
-  //       <a className="Nav-brand-name" href="/">
-  //         MOMENTS
-  //       </a>
-  //     </div>
-
-  //     <div className="Nav-right">
-  //     <Header as='h2'>
-  //      <Image circular src={this.props.currentUser.avatar} />
-  //      </Header>
-
-  //     <Button id="logout" color='teal'>logout</Button>
-  //     </div>
-
-  //   </div>
-  // </nav>
+    export default withRouter(Header)
