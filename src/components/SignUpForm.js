@@ -31,7 +31,7 @@ class SignupForm extends React.Component {
 				alert(resp.errors)
 				
 			} else {
-				this.props.setCurrentUser(resp)
+				this.props.login(resp)
 			}
 		})
 	}
@@ -41,7 +41,6 @@ class SignupForm extends React.Component {
 	}
 
 	render(){
-        console.log(this.state)
 		return (
 			<Form className="authForm" onSubmit={this.handleSubmit}>
             <Header as='h2' color='teal' textAlign='center'>

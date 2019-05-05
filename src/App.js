@@ -15,27 +15,34 @@ class App extends Component {
     currentUser: null
   }
 
-  setCurrentUser = (user) => {
+  login = (resp) => {
     this.setState({
-      currentUser: user
+      currentUser: resp.user
     }, () => {
-      localStorage.setItem("user_id", this.state.currentUser.id)
+      localStorage.setItem("Token", resp.token)
+      this.props.history.push("/home")})
+  }
+
+  setCurrentUser = (resp) => {
+    this.setState({
+      currentUser: resp.user
+    }, () => {
       this.props.history.push(this.props.location.pathname)})
   }
 
   logOut = () => {
-    localStorage.removeItem("user_id")
+    localStorage.removeItem("Token")
     this.setState({
       currentUser: null
     }, () => this.props.history.push("/login"))
   }
 
   componentDidMount = () => {
-    const userId = localStorage.getItem("user_id")
+    const token = localStorage.getItem("Token")
 
-    if (userId){
+    if (token){
       fetch("http://localhost:3000/auto_login", {
-        headers: {"Authorization": userId}
+        headers: {"Authorization": token}
       })
       .then(resp => resp.json())
       .then(resp => {
@@ -55,10 +62,10 @@ class App extends Component {
     <Switch>
   
     <Route path="/login" render={(routerProps)=> <LoginForm
-    {...routerProps} setCurrentUser={this.setCurrentUser}/>}/>
+    {...routerProps} login={this.login}/>}/>
     
     <Route path="/signup" render={(routerProps)=> <SignUpForm
-    {...routerProps} setCurrentUser={this.setCurrentUser}/>}/>
+    {...routerProps} login={this.login}/>}/>
     
     <Route path="/home" render={() => <HomePage/>}/>
     <Route path="*" render={() => <NotFound/>}/>
