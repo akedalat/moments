@@ -55,7 +55,6 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.state.currentUser)
   return <React.Fragment>
     <Header currentUser={this.state.currentUser}
     logOut={this.logOut}/>
