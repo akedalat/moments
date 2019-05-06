@@ -16,7 +16,7 @@ class Profile extends React.Component{
             </Header>
             </div>
             <div className="Edit">
-            <Button color='gray'>Edit Profile</Button>
+            <Button color='grey'>Edit Profile</Button>
             </div>
         </header>
 

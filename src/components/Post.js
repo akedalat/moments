@@ -13,7 +13,7 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
         }
 
         renderComments = () => {
-            return this.props.post.comments.map(comment => {  
+            return this.props.post.comments.map((comment,index) => { 
                return <li><strong>{comment.user.name}</strong> {comment.content}</li>
             })
         }

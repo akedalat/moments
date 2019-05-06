@@ -15,6 +15,7 @@ class HomePage extends React.Component {
         profileClicked: false
     }
 
+    //Sort posts chronologically and add them to state
     fetchPosts = () => {
         fetch(postsUrl,{
             method: "POST",
@@ -25,10 +26,14 @@ class HomePage extends React.Component {
             body: JSON.stringify({"id": 1}),
         }).then(resp => resp.json())
         .then(posts => {
-            this.setState({posts: posts})
+            this.setState({posts:  posts.sort((a,b)=> {
+                if (a.created_at < b.created_at) {return 1}
+                if (a.created_at > b.created_at) {return -1}
+                return 0
+                })})
         })
     }
-    
+   
     fetchUsers = () => {
         fetch(usersUrl)
             .then(resp => resp.json())
@@ -37,7 +42,7 @@ class HomePage extends React.Component {
             }))
     }
 
-    //GET POSTS & USERS
+    //GET POSTS & USERS when application runs
     componentDidMount = () => {
         this.fetchPosts()
         this.fetchUsers()
@@ -56,6 +61,7 @@ class HomePage extends React.Component {
             .then(this.fetchPosts)
     }
 
+    //To render user profile page
     handleProfileClicked = (id) => {
         this.setState({
             profileClicked: true,
@@ -64,8 +70,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-       console.log(this.state.posts)
-       console.log(this.state.users)
         return <React.Fragment>
             {this.state.profileClicked ?
                 <ProfileContainer
