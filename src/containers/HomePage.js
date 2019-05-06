@@ -3,7 +3,7 @@ import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
 
 
-const postsUrl = "http://localhost:3000/posts"
+const postsUrl = "http://localhost:3000/following_posts"
 const usersUrl = "http://localhost:3000/users"
 
 class HomePage extends React.Component {
@@ -12,40 +12,22 @@ class HomePage extends React.Component {
         users: [],
         user: [],
         posts: [],
-        filteredPosts: [],
         profileClicked: false
     }
 
-    filterPosts = () => {
-        // filter state's posts and then pass down as props
-        let returnedPosts = []
-        // iterate over following array and push into filteredPosts array and return is
-        const followingUsers = this.props.currentUser.following
-        for(let i = 0, n = followingUsers.lenght; i < n; i++) {
-            if(this.state.posts[i].user.id) {
-                returnedPosts.push(this.state.posts[i])
-            };
-        };
-        //this.state.posts.filter(post => post.user.id === following.id)
-        console.log(returnedPosts)
-    }
-
     fetchPosts = () => {
-        fetch(postsUrl)
-        .then(resp => resp.json())
+        fetch(postsUrl,{
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({"id": 1}),
+        }).then(resp => resp.json())
         .then(posts => {
-            this.setState({posts})
-            // if(this.props.currentUser){
-            //    this.props.currentUser.following.map(following => {
-            //       this.setState({
-            //           filteredPosts: this.state.posts.filter(post => post.user.id === following.id)
-            //       })
-            //    })
-            // } 
+            this.setState({posts: posts})
         })
     }
-
-
     
     fetchUsers = () => {
         fetch(usersUrl)
@@ -59,12 +41,10 @@ class HomePage extends React.Component {
     componentDidMount = () => {
         this.fetchPosts()
         this.fetchUsers()
-        this.filterPosts()
     }
 
     //ADD COMMENT 
     addComment = (comment, post_id) => {
-        //console.log(`${postsUrl}/${post_id}/comments`)
         fetch(`${postsUrl}/${post_id}/comments`, {
             method: "POST",
             headers: {
@@ -84,7 +64,8 @@ class HomePage extends React.Component {
     }
 
     render() {
-       // console.log(this.state.posts)
+       console.log(this.state.posts)
+       console.log(this.state.users)
         return <React.Fragment>
             {this.state.profileClicked ?
                 <ProfileContainer
@@ -92,7 +73,7 @@ class HomePage extends React.Component {
                     user={this.state.user} /> :
                 <PostList
                     users={this.state.users}
-                    posts={this.state.filteredPosts}
+                    posts={this.state.posts}
                     addComment={this.addComment}
                     handleProfileClicked={this.handleProfileClicked} />}
         </React.Fragment>
