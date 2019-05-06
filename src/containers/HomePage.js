@@ -18,9 +18,13 @@ class HomePage extends React.Component{
     fetchPosts = () => {
         fetch(postsUrl)
         .then(resp => resp.json())
-        .then(posts => this.setState({
-            posts: posts
-        }))
+        .then(posts => {
+            if(this.props.currentUser){
+            this.setState({
+            posts: posts.filter(post => post.user.id === this.props.currentUser.id)
+                })  
+            } 
+        })
     }
 
     fetchUsers = () => {
@@ -58,6 +62,8 @@ class HomePage extends React.Component{
     }
 
     render(){
+        console.log("posts: ", this.state.posts)
+        console.log("props: ", this.props)
     return <React.Fragment>
             {this.state.profileClicked ? 
             <ProfileContainer 
