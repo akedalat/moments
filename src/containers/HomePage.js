@@ -73,9 +73,11 @@ class HomePage extends React.Component {
         return <React.Fragment>
             {this.state.profileClicked ?
                 <ProfileContainer
+                    currentUser={this.props.currentUser}
                     users={this.state.users}
                     user={this.state.user} /> :
                 <PostList
+                currentUser={this.props.currentUser}
                     users={this.state.users}
                     posts={this.state.posts}
                     addComment={this.addComment}

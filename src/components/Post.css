@@ -8,18 +8,20 @@
     background-color: #fff;
     margin: auto;
     width: 50%;
-    margin-top: 8%;
+    margin-top: 6%;
 
   }
+
    .Post-user {
       display: flex;
       padding: 16px;
       align-items: center;
     }
-          .Post-user-name {
-            font-family: Helvetica, 'PT Sans', sans-serif !important;
-            font-size: 1.5vw !important;
-          } 
+
+    .Post-user-name {
+      font-family: Helvetica, 'PT Sans', sans-serif !important;
+      font-size: 1.5vw !important;
+    } 
 
       .Post-image-bg {
         background-color: #efefef;
@@ -60,4 +62,14 @@
       #Form {
         padding: 1%;
       }
+
+      /* #grey-like-btn {
+        color:white;
+        background-color: grey;
+      }
+
+      #red-like-btn {
+        color:white;
+        background-color:red;
+      } */
      
