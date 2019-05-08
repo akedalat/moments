@@ -3,7 +3,8 @@ import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
 
 
-const postsUrl = "http://localhost:3000/following_posts"
+const followingPostsUrl = "http://localhost:3000/following_posts"
+const postsUrl = "http://localhost:3000/posts"
 const usersUrl = "http://localhost:3000/users"
 
 class HomePage extends React.Component {
@@ -17,7 +18,7 @@ class HomePage extends React.Component {
 
     //Sort posts chronologically and add them to state
     fetchPosts = () => {
-        fetch(postsUrl,{
+        fetch(followingPostsUrl,{
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -61,6 +62,27 @@ class HomePage extends React.Component {
             .then(this.fetchPosts)
     }
 
+     //CREATE LIKE 
+     createLike = (user_id, post_id) => {
+        fetch(`${postsUrl}/${post_id}/likes`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user_id),
+        }).then(resp => resp.json())
+            .then(this.fetchPosts)
+    }
+
+    //DELETE LIKE
+    deleteLike = (like_id, post_id) => {
+        fetch(`${postsUrl}/${post_id}/likes/${like_id}`, {
+            method: "DELETE",
+        }).then(resp => resp.json())
+            .then(this.fetchPosts)
+    }
+
     //To render user profile page
     handleProfileClicked = (id) => {
         this.setState({
@@ -81,6 +103,8 @@ class HomePage extends React.Component {
                     users={this.state.users}
                     posts={this.state.posts}
                     addComment={this.addComment}
+                    createLike={this.createLike}
+                    deleteLike={this.deleteLike}
                     handleProfileClicked={this.handleProfileClicked} />}
         </React.Fragment>
     }

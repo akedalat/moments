@@ -11,6 +11,8 @@ class PostList extends React.Component{
             handleProfileClicked={this.props.handleProfileClicked} 
             post={post}
             addComment={this.props.addComment}
+            createLike={this.props.createLike}
+            deleteLike={this.props.deleteLike}
             currentUser={this.props.currentUser}
             />})}
         </React.Fragment>

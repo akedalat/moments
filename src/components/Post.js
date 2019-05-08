@@ -10,33 +10,8 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
             buttonColor : "",
           
         }
-         //if user.likes includes post.like
-        //then button is red else button is grey
-        
-//     renderButtonColor = () => {
-//         let tf = []
-//         for(let postLike of this.props.post.likes){
-//             for(let userLike of this.props.currentUser.likes){
-//                 if(postLike.id === userLike.id){
-//                     tf.push("true")
-//                 }
-//                 else if (postLike.id !== userLike.id) {   
-//                     tf.push("false")
-//                 }
-//             }   
-//         }
-//         console.log(tf)
-//         return tf
-//   }
 
-    // renderBtn = () => {
-    //     return <Button color="red"
-    //             onClick={this.handleLikeClick}>
-    //             <Icon name='heart' />
-    //             Like
-    //             </Button>
-    // }
-
+    //if post likes has current user button is red else button is grey
     renderButton = () => {
         if(this.props.post.likes.some(like => like.user_id === this.props.currentUser.id)){
             return  <Button color="red"
@@ -56,10 +31,16 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
         handleProfileClick = () => {
             this.props.handleProfileClicked(this.props.post.user.id)
         }
-
-        handleLikeClick = (e) => {
-           //if user.likes includes post.like, delete like and change red to grey 
-           //else create like change grey to red
+        
+        //if post likes includes user delete else create like
+        handleLikeClick = () => {
+            if(this.props.post.likes.some(like => like.user_id === this.props.currentUser.id)){
+                let like = this.props.post.likes.find(like => like.user_id === this.props.currentUser.id)
+                this.props.deleteLike(like.id, this.props.post.id)       
+            }
+            else {
+                this.props.createLike(this.props.currentUser.id, this.props.post.id)
+            }
         }
 
         renderComments = () => {
@@ -67,9 +48,10 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
                return <li key={index}><strong>{comment.user.name}</strong> {comment.content}</li>
             })
         }
-
-        handleSubmit = () => {
-            let comment = {user_id:1, post_id:this.props.post.id, content:this.state.content }
+        
+        //Create Comment
+        handlePostComment = () => {
+            let comment = {user_id: this.props.currentUser.id, content:this.state.content }
             this.props.addComment(comment, this.props.post.id)
             this.setState({content: ""})
         }
@@ -111,7 +93,7 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
                         <ul>Comments: {this.renderComments()}</ul> 
                     </div>
 
-                    <Form onSubmit={this.handleSubmit} id="Form">
+                    <Form onSubmit={this.handlePostComment} id="Form">
                     <Form.Group>
                     <Form.Input className="Comment" placeholder='Add a comment...' name='name' 
                     value={this.state.content} onChange={this.handleChange}/>
