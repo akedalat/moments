@@ -64,13 +64,14 @@ class HomePage extends React.Component {
 
      //CREATE LIKE 
      createLike = (user_id, post_id) => {
+         debugger
         fetch(`${postsUrl}/${post_id}/likes`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(user_id),
+            body: JSON.stringify({ user_id }),
         }).then(resp => resp.json())
             .then(this.fetchPosts)
     }
