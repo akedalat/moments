@@ -9,11 +9,17 @@ import SignUpForm from './components/SignUpForm'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 
+
 class App extends Component {
 
   state = {
-    currentUser: null
+    currentUser: null,
+    addImageClicked: false
   }
+
+addImageClicked = () => {
+  this.setState({addImageClicked: true})
+}
 
   login = (resp) => {
     this.setState({
@@ -56,11 +62,11 @@ class App extends Component {
 
   render(){
   return <React.Fragment>
-    <Header currentUser={this.state.currentUser}
+    <Header addImageClicked={this.addImageClicked} currentUser={this.state.currentUser}
     logOut={this.logOut}/>
     {this.state.currentUser ?
       <Switch>
-      <Route path="/home" render={() => <HomePage currentUser={this.state.currentUser}/>}/>
+      <Route path="/home" render={() => <HomePage addImageClicked={this.state.addImageClicked} currentUser={this.state.currentUser}/>}/>
       {/* <Route path="*" render={() => <NotFound/>}/> */}
       </Switch>
     :

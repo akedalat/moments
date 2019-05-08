@@ -2,13 +2,11 @@ import React from "react";
 import './Post.css'
 import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
 
-
     class Post extends React.Component{
 
         state = {
             content: "",
-            buttonColor : "",
-          
+            buttonColor : "", 
         }
 
     //if post likes has current user button is red else button is grey

@@ -1,6 +1,7 @@
 import React from "react";
 import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
+import AddImage from '../components/AddImage'
 
 
 const followingPostsUrl = "http://localhost:3000/following_posts"
@@ -13,7 +14,7 @@ class HomePage extends React.Component {
         users: [],
         user: [],
         posts: [],
-        profileClicked: false
+        profileClicked: false,
     }
 
     //Sort posts chronologically and add them to state
@@ -64,7 +65,7 @@ class HomePage extends React.Component {
 
      //CREATE LIKE 
      createLike = (user_id, post_id) => {
-         debugger
+     
         fetch(`${postsUrl}/${post_id}/likes`, {
             method: "POST",
             headers: {
@@ -92,21 +93,32 @@ class HomePage extends React.Component {
         })
     }
 
+    renderHomePage = () => {
+        if (this.state.profileClicked){
+            return <ProfileContainer
+            currentUser={this.props.currentUser}
+            users={this.state.users}
+            user={this.state.user} /> 
+        } else if (this.props.addImageClicked){
+           return  <AddImage
+            currentUser={this.props.currentUser}/> 
+        }
+        else {
+            return <PostList
+            currentUser={this.props.currentUser}
+            users={this.state.users}
+            posts={this.state.posts}
+            addComment={this.addComment}
+            createLike={this.createLike}
+            deleteLike={this.deleteLike}
+            handleProfileClicked={this.handleProfileClicked} />
+        }
+    }
+
     render() {
+        console.log(this.props)
         return <React.Fragment>
-            {this.state.profileClicked ?
-                <ProfileContainer
-                    currentUser={this.props.currentUser}
-                    users={this.state.users}
-                    user={this.state.user} /> :
-                <PostList
-                currentUser={this.props.currentUser}
-                    users={this.state.users}
-                    posts={this.state.posts}
-                    addComment={this.addComment}
-                    createLike={this.createLike}
-                    deleteLike={this.deleteLike}
-                    handleProfileClicked={this.handleProfileClicked} />}
+            {this.renderHomePage()}
         </React.Fragment>
     }
 

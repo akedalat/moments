@@ -27,8 +27,8 @@ class Profile extends React.Component{
         </div>
         <Grid>
         <Grid.Row className="Grid-row" columns={3}>
-            {this.props.user.posts.map(post => {
-            return <Grid.Column><Image src={post.image}/></Grid.Column>})}  
+            {this.props.user.posts.map((post, index) => {
+            return <Grid.Column key={index}><Image src={post.image}/></Grid.Column>})}  
         </Grid.Row>
         </Grid>
         

@@ -4,6 +4,10 @@ import {withRouter} from 'react-router-dom'
 import {Button, Menu, Icon} from 'semantic-ui-react'
 
     class Header extends React.Component{
+
+      handleImageClick = () => {
+        this.props.addImageClicked()
+      }
         render(){
           return (
             <Menu className="Menu" size='massive'>
@@ -13,7 +17,7 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
             {this.props.currentUser ?
             <Menu.Menu position='right'>
-            <Menu.Item>
+            <Menu.Item onClick={this.handleImageClick}>
               <Icon name="add"/>Add Image
             </Menu.Item>
             <Menu.Item>
