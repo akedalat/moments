@@ -1,0 +1,15 @@
+.FileUpload {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 10%;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    padding: 1%;
+    align-items: center;
+}
+
+img {
+    width: 60%;
+    margin: 0 auto;
+}

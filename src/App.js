@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import AddImage from './components/AddImage';
 
 
 
@@ -19,6 +20,10 @@ class App extends Component {
 
 addImageClicked = () => {
   this.setState({addImageClicked: true})
+}
+
+cancelImageClicked = () => {
+  this.setState({addImageClicked: false})
 }
 
   login = (resp) => {
@@ -67,7 +72,9 @@ addImageClicked = () => {
     logOut={this.logOut}/>
     {this.state.currentUser ?
       <Switch>
-      <Route path="/home" render={() => <HomePage addImageClicked={this.state.addImageClicked} currentUser={this.state.currentUser}/>}/>
+        <Route path="/home/add-image" component={AddImage}/>
+      <Route path="/home" render={() => <HomePage cancelImageClicked={this.cancelImageClicked} addImageClicked={this.state.addImageClicked} currentUser={this.state.currentUser}/>}/>
+      
       {/* <Route path="*" render={() => <NotFound/>}/> */}
       </Switch>
     :

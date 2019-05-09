@@ -11,7 +11,7 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
         render(){
           return (
             <Menu className="Menu" size='massive'>
-            
+          
             <Menu.Item className="Nav-brand-name" name='MOMENTS' />
          
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
@@ -19,6 +19,9 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
             <Menu.Menu position='right'>
             <Menu.Item onClick={this.handleImageClick}>
               <Icon name="add"/>Add Image
+            </Menu.Item>
+            <Menu.Item>
+              <Icon name="users"/>
             </Menu.Item>
             <Menu.Item>
               <Icon name="user"/>

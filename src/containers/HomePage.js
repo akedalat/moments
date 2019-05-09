@@ -50,6 +50,20 @@ class HomePage extends React.Component {
         this.fetchUsers()
     }
 
+    //CREATE POST
+    createPost = (post) => {
+        fetch(postsUrl,{
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(post), 
+        }).then(resp => resp.json())
+        .then(this.fetchPosts)
+        this.props.cancelImageClicked()
+    }
+
     //ADD COMMENT 
     addComment = (comment, post_id) => {
         fetch(`${postsUrl}/${post_id}/comments`, {
@@ -93,17 +107,9 @@ class HomePage extends React.Component {
         })
     }
 
-    //Change profile click to false to render other components
-    reverseProfileClicked = () => {
-        if (this.props.addImageClicked){
-            this.setState({profileClicked: false})
-        }
-    }
-
     //To be invoked in render()
     renderHomePage = () => {
         if (this.state.profileClicked){
-            this.reverseProfileClicked() 
             return <ProfileContainer
             currentUser={this.props.currentUser}
             users={this.state.users}
@@ -112,7 +118,8 @@ class HomePage extends React.Component {
         } else if (this.props.addImageClicked){
             
            return  <AddImage
-            currentUser={this.props.currentUser}/> 
+            currentUser={this.props.currentUser}
+            createPost={this.createPost}/> 
         }
         else {
             return <PostList
@@ -127,7 +134,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log(this.state.profileClicked)
+        console.log(this.props)
         return <React.Fragment>
             {this.renderHomePage()}
         </React.Fragment>
