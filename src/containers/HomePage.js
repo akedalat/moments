@@ -8,6 +8,7 @@ import UserList from './UserList'
 const followingPostsUrl = "http://localhost:3000/following_posts"
 const postsUrl = "http://localhost:3000/posts"
 const usersUrl = "http://localhost:3000/users"
+const relationshipsUrl = "http://localhost:3000/relationships"
 
 class HomePage extends React.Component {
 
@@ -100,13 +101,28 @@ class HomePage extends React.Component {
             .then(this.fetchPosts)
     }
 
-    //Render user profile page
+    //To render user profile page
     handleProfileClicked = (id) => {
         this.setState({
             profileClicked: true,
             user: this.state.users.find(user => id === user.id)
         })
     }
+
+    // Create Follow
+        createFollow = (relationship) => {
+            fetch(relationshipsUrl,{
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(relationship),
+        }).then(resp => resp.json())
+            .then(this.fetchPosts)
+        }
+
+    // Delete Follow
 
     //To be invoked in render()
     renderHomePage = () => {
@@ -115,11 +131,18 @@ class HomePage extends React.Component {
              currentUser={this.props.currentUser}
              createPost={this.createPost}/> 
          }
+         else if (this.props.usersClicked){
+             return <UserList users={this.state.users}
+             handleProfileClicked={this.handleProfileClicked}
+             currentUser={this.props.currentUser}
+             createFollow={this.createFollow}/>
+         }
         else if (this.state.profileClicked){
             return <ProfileContainer
             currentUser={this.props.currentUser}
             users={this.state.users}
-            user={this.state.user} /> 
+            user={this.state.user}
+            createFollow={this.createFollow}/> 
             
         } else {
             return <PostList

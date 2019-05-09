@@ -2,7 +2,26 @@ import React from "react";
 import './Profile.css'
 import { Header, Image, Button, Grid} from 'semantic-ui-react'
 
-class Profile extends React.Component{
+class User extends React.Component{
+
+    renderButton = () => {
+        if(this.props.currentUser.following.some(user => user.id === this.props.user.id)){
+            return <Button color='grey'>Unfollow</Button>
+        }
+        else if (this.props.currentUser.id === this.props.user.id){
+            return null
+        }
+        else {
+            return <Button onClick={this.handleFollowClick} color='grey'>Follow</Button>
+        }
+    }
+
+    handleFollowClick = () => {
+        let relationship = {
+            follower_id: this.props.currentUser.id,
+            followed_id: this.props.user.id}
+        this.props.createFollow(relationship)
+    }
 
     render(){
     return <React.Fragment>
@@ -16,7 +35,7 @@ class Profile extends React.Component{
             </Header>
             </div>
             <div className="Edit">
-            <Button color='grey'>Edit Profile</Button>
+            {this.renderButton()}
             </div>
         </header>
 
@@ -39,4 +58,4 @@ class Profile extends React.Component{
 
 }
 
-export default Profile;
+export default User;

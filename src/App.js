@@ -85,7 +85,6 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.state)
   return <React.Fragment>
     <Header 
       currentUser={this.state.currentUser}
@@ -100,8 +99,9 @@ class App extends Component {
     {this.state.currentUser ?
       <Switch>
         <Route path="/home/add-image" component={AddImage}/>
-      <Route path="/home" render={() => <HomePage 
-      cancelImageClicked={this.cancelImageClicked} 
+      <Route path="/home" render={() => <HomePage
+      currentUserClicked={this.state.currentUserClicked}
+      usersClicked={this.state.usersClicked} 
       addImageClicked={this.state.addImageClicked} 
       currentUser={this.state.currentUser}/>}/>
       

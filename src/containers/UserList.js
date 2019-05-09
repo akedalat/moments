@@ -1,19 +1,17 @@
 import React from "react";
-import Post from '../components/User'
+import User from '../components/User'
 
-class PostList extends React.Component{
+class UserList extends React.Component{
 
     render(){
-    return <React.Fragment>{this.props.posts.map((post, index)=> {
-            return <Post 
+    return <React.Fragment>{this.props.users.map((user, index)=> {
+            return <User 
             key={index}
             users={this.props.users} 
             handleProfileClicked={this.props.handleProfileClicked} 
-            post={post}
-            addComment={this.props.addComment}
-            createLike={this.props.createLike}
-            deleteLike={this.props.deleteLike}
+            user={user}
             currentUser={this.props.currentUser}
+            createFollow={this.props.createFollow}
             />})}
         </React.Fragment>
 
@@ -21,4 +19,4 @@ class PostList extends React.Component{
 
 }
 
-export default PostList;
+export default UserList;

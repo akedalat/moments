@@ -59,8 +59,6 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
         }
         
         render() {
-            this.renderButton()
-          
             return(
                 <article className="Post" ref="Post">
 

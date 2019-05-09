@@ -7,7 +7,6 @@ class PostList extends React.Component{
     return <React.Fragment>{this.props.posts.map((post, index)=> {
             return <Post 
             key={index}
-            users={this.props.users} 
             handleProfileClicked={this.props.handleProfileClicked} 
             post={post}
             addComment={this.props.addComment}

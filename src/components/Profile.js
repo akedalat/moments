@@ -4,6 +4,18 @@ import { Header, Image, Button, Grid} from 'semantic-ui-react'
 
 class Profile extends React.Component{
 
+    renderButton = () => {
+        if(this.props.currentUser.following.some(user => user.id === this.props.user.id)){
+            return <Button color='grey'>Unfollow</Button>
+        }
+        else if (this.props.currentUser.id === this.props.user.id){
+            return null
+        }
+        else {
+            return <Button color='grey'>Follow</Button>
+        }
+    }
+
     render(){
     return <React.Fragment>
     <article className="Profile-container" ref="Post">   
@@ -16,7 +28,7 @@ class Profile extends React.Component{
             </Header>
             </div>
             <div className="Edit">
-            <Button color='grey'>Edit Profile</Button>
+            {this.renderButton()}
             </div>
         </header>
 

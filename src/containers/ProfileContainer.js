@@ -6,7 +6,8 @@ class ProfileContainer extends React.Component{
 
     render(){
     return <React.Fragment>
-        <Profile user={this.props.user}/>
+        <Profile user={this.props.user}
+        currentUser={this.props.currentUser}/>
     </React.Fragment> 
 
     }
