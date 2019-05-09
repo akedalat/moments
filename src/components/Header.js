@@ -7,7 +7,23 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
 
       handleImageClick = () => {
         this.props.addImageClicked()
+        this.props.cancelCurrentUserClicked()
+        this.props.cancelUsersClicked()
       }
+
+      handleUsersClick = () => {
+        this.props.usersClicked()
+        this.props.cancelCurrentUserClicked()
+        this.props.cancelImageClicked()
+      }
+
+      handleCurrentUserClick = () => {
+        this.props.currentUserClicked()
+        this.props.cancelImageClicked()
+        this.props.cancelUsersClicked()
+      }
+
+
         render(){
           return (
             <Menu className="Menu" size='massive'>
@@ -20,10 +36,10 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
             <Menu.Item onClick={this.handleImageClick}>
               <Icon name="add"/>Add Image
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item onClick={this.handleUsersClick}>
               <Icon name="users"/>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item onClick={this.handleCurrentUserClick}>
               <Icon name="user"/>
             </Menu.Item>
               <Menu.Item>

@@ -15,14 +15,32 @@ class App extends Component {
 
   state = {
     currentUser: null,
-    addImageClicked: false
+    addImageClicked: false,
+    currentUserClicked: false,
+    usersClicked: false
   }
 
-addImageClicked = () => {
+  currentUserClicked = () => {
+    this.setState({currentUserClicked: true})
+  }
+  
+  cancelCurrentUserClicked = () => {
+    this.setState({currentUserClicked: false})
+  }
+
+  usersClicked = () => {
+    this.setState({usersClicked: true})
+  }
+  
+  cancelUsersClicked = () => {
+    this.setState({usersClicked: false})
+  }
+
+  addImageClicked = () => {
   this.setState({addImageClicked: true})
 }
 
-cancelImageClicked = () => {
+  cancelImageClicked = () => {
   this.setState({addImageClicked: false})
 }
 
@@ -67,13 +85,25 @@ cancelImageClicked = () => {
   }
 
   render(){
+    console.log(this.state)
   return <React.Fragment>
-    <Header addImageClicked={this.addImageClicked} currentUser={this.state.currentUser}
-    logOut={this.logOut}/>
+    <Header 
+      currentUser={this.state.currentUser}
+      logOut={this.logOut}
+      addImageClicked={this.addImageClicked} 
+      currentUserClicked={this.currentUserClicked}
+      usersClicked={this.usersClicked}
+      cancelUsersClicked={this.cancelUsersClicked}
+      cancelCurrentUserClicked={this.cancelCurrentUserClicked}
+      cancelImageClicked={this.cancelImageClicked}/>
+
     {this.state.currentUser ?
       <Switch>
         <Route path="/home/add-image" component={AddImage}/>
-      <Route path="/home" render={() => <HomePage cancelImageClicked={this.cancelImageClicked} addImageClicked={this.state.addImageClicked} currentUser={this.state.currentUser}/>}/>
+      <Route path="/home" render={() => <HomePage 
+      cancelImageClicked={this.cancelImageClicked} 
+      addImageClicked={this.state.addImageClicked} 
+      currentUser={this.state.currentUser}/>}/>
       
       {/* <Route path="*" render={() => <NotFound/>}/> */}
       </Switch>

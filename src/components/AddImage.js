@@ -2,7 +2,7 @@ import React from "react";
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { toast } from 'react-toastify';
-import { Button, Form, Icon, Grid, Image, Segment, Loader, Dimmer } from 'semantic-ui-react'
+import { Form} from 'semantic-ui-react'
 import './AddImage.css'
 
 const CLOUDINARY_UPLOAD_PRESET = 'ygp7mkyu'

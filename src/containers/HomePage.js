@@ -2,6 +2,7 @@ import React from "react";
 import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
 import AddImage from '../components/AddImage'
+import UserList from './UserList'
 
 
 const followingPostsUrl = "http://localhost:3000/following_posts"
@@ -109,19 +110,18 @@ class HomePage extends React.Component {
 
     //To be invoked in render()
     renderHomePage = () => {
-        if (this.state.profileClicked){
+        if (this.props.addImageClicked){
+            return  <AddImage
+             currentUser={this.props.currentUser}
+             createPost={this.createPost}/> 
+         }
+        else if (this.state.profileClicked){
             return <ProfileContainer
             currentUser={this.props.currentUser}
             users={this.state.users}
             user={this.state.user} /> 
             
-        } else if (this.props.addImageClicked){
-            
-           return  <AddImage
-            currentUser={this.props.currentUser}
-            createPost={this.createPost}/> 
-        }
-        else {
+        } else {
             return <PostList
             currentUser={this.props.currentUser}
             users={this.state.users}
@@ -134,7 +134,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return <React.Fragment>
             {this.renderHomePage()}
         </React.Fragment>
