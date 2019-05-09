@@ -14,7 +14,7 @@ class HomePage extends React.Component {
         users: [],
         user: [],
         posts: [],
-        profileClicked: false,
+        profileClicked: false ,
     }
 
     //Sort posts chronologically and add them to state
@@ -85,7 +85,7 @@ class HomePage extends React.Component {
             .then(this.fetchPosts)
     }
 
-    //To render user profile page
+    //Render user profile page
     handleProfileClicked = (id) => {
         this.setState({
             profileClicked: true,
@@ -93,13 +93,24 @@ class HomePage extends React.Component {
         })
     }
 
+    //Change profile click to false to render other components
+    reverseProfileClicked = () => {
+        if (this.props.addImageClicked){
+            this.setState({profileClicked: false})
+        }
+    }
+
+    //To be invoked in render()
     renderHomePage = () => {
         if (this.state.profileClicked){
+            this.reverseProfileClicked() 
             return <ProfileContainer
             currentUser={this.props.currentUser}
             users={this.state.users}
             user={this.state.user} /> 
+            
         } else if (this.props.addImageClicked){
+            
            return  <AddImage
             currentUser={this.props.currentUser}/> 
         }
@@ -116,7 +127,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.state.profileClicked)
         return <React.Fragment>
             {this.renderHomePage()}
         </React.Fragment>

@@ -43,6 +43,7 @@ addImageClicked = () => {
     }, () => this.props.history.push("/login"))
   }
 
+  //Auto Login
   componentDidMount = () => {
     const token = localStorage.getItem("Token")
 
