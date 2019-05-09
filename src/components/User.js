@@ -5,8 +5,8 @@ import { Header, Image, Button, Grid} from 'semantic-ui-react'
 class User extends React.Component{
 
     renderButton = () => {
-        if(this.props.currentUser.following.some(user => user.id === this.props.user.id)){
-            return <Button color='grey'>Unfollow</Button>
+        if(this.props.user.followers.some(user => user.id === this.props.currentUser.id)){
+            return <Button onClick={this.handleUnfollowClick} color='grey'>Unfollow</Button>
         }
         else if (this.props.currentUser.id === this.props.user.id){
             return null
@@ -21,6 +21,11 @@ class User extends React.Component{
             follower_id: this.props.currentUser.id,
             followed_id: this.props.user.id}
         this.props.createFollow(relationship)
+    }
+
+    handleUnfollowClick = () => {
+        let relationship = this.props.currentUser.active_relationships.find(relationship => relationship.followed_id === this.props.user.id)
+        this.props.deleteFollow(relationship.id)
     }
 
     render(){

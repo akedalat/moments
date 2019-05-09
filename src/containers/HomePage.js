@@ -39,11 +39,14 @@ class HomePage extends React.Component {
     }
    
     fetchUsers = () => {
-        fetch(usersUrl)
-            .then(resp => resp.json())
-            .then(users => this.setState({
-                users: users
-            }))
+        this.props.updateCurrentUser()
+            .then(() => {
+                fetch(usersUrl)
+                    .then(resp => resp.json())
+                    .then(users => this.setState({
+                        users: users
+                    }))
+            })
     }
 
     //GET POSTS & USERS when application runs
@@ -119,10 +122,18 @@ class HomePage extends React.Component {
             },
             body: JSON.stringify(relationship),
         }).then(resp => resp.json())
+            .then(this.fetchUsers)
             .then(this.fetchPosts)
         }
 
     // Delete Follow
+    deleteFollow = (id) => {
+        fetch(`${relationshipsUrl}/${id}`, {
+            method: "DELETE",
+        }).then(resp => resp.json())
+            .then(this.fetchPosts)
+            .then(this.fetchUsers)
+    }
 
     //To be invoked in render()
     renderHomePage = () => {
@@ -135,7 +146,8 @@ class HomePage extends React.Component {
              return <UserList users={this.state.users}
              handleProfileClicked={this.handleProfileClicked}
              currentUser={this.props.currentUser}
-             createFollow={this.createFollow}/>
+             createFollow={this.createFollow}
+             deleteFollow={this.deleteFollow}/>
          }
         else if (this.state.profileClicked){
             return <ProfileContainer

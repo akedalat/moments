@@ -68,17 +68,22 @@ class App extends Component {
 
   //Auto Login
   componentDidMount = () => {
-    const token = localStorage.getItem("Token")
+    this.updateCurrentUser()
+  }
 
+  updateCurrentUser = () => {
+    const token = localStorage.getItem("Token")
     if (token){
-      fetch("http://localhost:3000/auto_login", {
+      return fetch("http://localhost:3000/auto_login", {
         headers: {"Authorization": token}
       })
       .then(resp => resp.json())
       .then(resp => {
         if (resp.errors){
           alert(resp.errors)
-        } else {this.setCurrentUser(resp)}
+        } else {
+          this.setCurrentUser(resp)
+        }
         }
       )
     }
@@ -100,6 +105,7 @@ class App extends Component {
       <Switch>
         <Route path="/home/add-image" component={AddImage}/>
       <Route path="/home" render={() => <HomePage
+      updateCurrentUser={this.updateCurrentUser}
       currentUserClicked={this.state.currentUserClicked}
       usersClicked={this.state.usersClicked} 
       addImageClicked={this.state.addImageClicked} 
