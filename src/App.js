@@ -109,6 +109,7 @@ class App extends Component {
       currentUserClicked={this.state.currentUserClicked}
       usersClicked={this.state.usersClicked} 
       addImageClicked={this.state.addImageClicked} 
+      cancelImageClicked={this.cancelImageClicked}
       currentUser={this.state.currentUser}/>}/>
       
       {/* <Route path="*" render={() => <NotFound/>}/> */}

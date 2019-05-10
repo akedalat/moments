@@ -3,6 +3,8 @@ import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
 import AddImage from '../components/AddImage'
 import UserList from './UserList'
+import currentUserProfile from '../components/CurrentUserProfile'
+import CurrentUserProfile from "../components/CurrentUserProfile";
 
 
 const followingPostsUrl = "http://localhost:3000/following_posts"
@@ -149,6 +151,10 @@ class HomePage extends React.Component {
              createFollow={this.createFollow}
              deleteFollow={this.deleteFollow}/>
          }
+         else if (this.props.currentUserClicked){
+            return <CurrentUserProfile
+            currentUser={this.props.currentUser}/>
+         }
         else if (this.state.profileClicked){
             return <ProfileContainer
             currentUser={this.props.currentUser}
@@ -169,6 +175,7 @@ class HomePage extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return <React.Fragment>
             {this.renderHomePage()}
         </React.Fragment>
