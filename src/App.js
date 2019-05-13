@@ -56,7 +56,7 @@ class App extends Component {
     this.setState({
       currentUser: resp.user
     }, () => {
-      this.props.history.push("/home")}) // this.props.location.pathname for specific path
+      this.props.history.push(this.props.location.pathname)}) // this.props.location.pathname for specific path
   }
 
   logOut = () => {
@@ -120,7 +120,7 @@ class App extends Component {
     {...routerProps} login={this.login}/>}/>
     <Route path="/signup" render={(routerProps)=> <SignUpForm
     {...routerProps} login={this.login}/>}/>
-    <Route path="*" render={() => (<Redirect to="/login" />)} /> 
+    {/* <Route path="*" render={() => (<Redirect to="/login" />)} />  */}
     </Switch>
     }
     </React.Fragment>
