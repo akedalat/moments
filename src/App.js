@@ -49,7 +49,7 @@ class App extends Component {
       currentUser: resp.user
     }, () => {
       localStorage.setItem("Token", resp.token)
-      this.props.history.push("/home")})
+      this.props.history.push("/")})
   }
 
   setCurrentUser = (resp) => {
@@ -90,6 +90,7 @@ class App extends Component {
   }
 
   render(){
+   // console.log(this.state.currentUser)
   return <React.Fragment>
     <Header 
       currentUser={this.state.currentUser}
@@ -103,8 +104,8 @@ class App extends Component {
 
     {this.state.currentUser ?
       <Switch>
-        <Route path="/home/add-image" component={AddImage}/>
-      <Route path="/home" render={() => <HomePage
+        <Route path="/add-image" component={AddImage}/>
+      <Route path="/" render={() => <HomePage
       updateCurrentUser={this.updateCurrentUser}
       currentUserClicked={this.state.currentUserClicked}
       usersClicked={this.state.usersClicked} 

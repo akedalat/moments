@@ -3,7 +3,6 @@ import PostList from './PostList'
 import ProfileContainer from './ProfileContainer'
 import AddImage from '../components/AddImage'
 import UserList from './UserList'
-import currentUserProfile from '../components/CurrentUserProfile'
 import CurrentUserProfile from "../components/CurrentUserProfile";
 
 
@@ -42,13 +41,11 @@ class HomePage extends React.Component {
    
     fetchUsers = () => {
         this.props.updateCurrentUser()
-            .then(() => {
                 fetch(usersUrl)
                     .then(resp => resp.json())
                     .then(users => this.setState({
                         users: users
-                    }))
-            })
+                    })) 
     }
 
     //GET POSTS & USERS when application runs
@@ -173,7 +170,7 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log(this.props)
+        console.log(this.props.currentUser)
         return <React.Fragment>
             {this.renderHomePage()}
         </React.Fragment>
