@@ -13,3 +13,10 @@ img {
     width: 60%;
     margin: 0 auto;
 }
+
+.Dropzone {
+    padding: 10%;
+    background-color: beige;
+    border-radius: 5px;
+    margin-bottom: 3%;
+}

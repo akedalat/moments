@@ -125,7 +125,6 @@ class HomePage extends React.Component {
             body: JSON.stringify(relationship),
         }).then(resp => resp.json())
             .then(this.fetchUsers)
-            .then(this.fetchPosts)
         }
 
     // Delete Follow
@@ -133,7 +132,6 @@ class HomePage extends React.Component {
         fetch(`${relationshipsUrl}/${id}`, {
             method: "DELETE",
         }).then(resp => resp.json())
-            .then(this.fetchPosts)
             .then(this.fetchUsers)
     }
 

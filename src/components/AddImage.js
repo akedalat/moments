@@ -12,7 +12,6 @@ const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dacf1ygqh/image/u
 
         state = {
             caption: "",
-            loading: false,
             uploadedFileCloudinaryUrl: ""
         }
         
@@ -34,7 +33,7 @@ const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dacf1ygqh/image/u
         }
 
         onImageDrop = files => {
-            this.setState({ uploadedFile: files[0], loading: true })
+            this.setState({ uploadedFile: files[0] })
             this.handleImageUpload(files[0])
         }
     
@@ -48,8 +47,7 @@ const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dacf1ygqh/image/u
                 }
                 if(response.body.secure_url !== ''){
                     this.setState({
-                        uploadedFileCloudinaryUrl: response.body.secure_url,
-                        loading:false
+                        uploadedFileCloudinaryUrl: response.body.secure_url
                     })
                 }
             })
@@ -58,8 +56,8 @@ const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dacf1ygqh/image/u
         render() { 
             return(
                 <Form onSubmit={this.handleSubmit} id="Form" className="FileUpload">
-                <div>
-                <Dropzone
+                <div className="Dropzone">
+                <Dropzone 
                     onDrop={this.onImageDrop.bind(this)}
                     accept="image/*"
                     multiple={false}>
