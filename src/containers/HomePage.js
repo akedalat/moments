@@ -5,6 +5,8 @@ import AddImage from '../components/AddImage'
 import UserList from './UserList'
 import CurrentUserProfile from "../components/CurrentUserProfile";
 
+import { Route, Switch } from "react-router-dom";
+
 
 const followingPostsUrl = "http://localhost:3000/following_posts"
 const postsUrl = "http://localhost:3000/posts"
@@ -171,6 +173,7 @@ class HomePage extends React.Component {
 
     render() {
         return <React.Fragment>
+            
             {this.renderHomePage()}
         </React.Fragment>
     }

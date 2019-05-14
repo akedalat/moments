@@ -5,9 +5,7 @@ import HomePage from './containers/HomePage'
 import NotFound from './components/NotFound'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
-
 import { Route, Switch } from "react-router-dom";
-import AddImage from './components/AddImage';
 
 
 
@@ -110,8 +108,6 @@ class App extends Component {
       usersClicked={this.state.usersClicked} 
       addImageClicked={this.state.addImageClicked} 
       cancelImageClicked={this.cancelImageClicked}
-      currentUser={this.state.currentUser}/>}/>
-      <Route path="/add-image" render={() => <AddImage 
       currentUser={this.state.currentUser}/>}/>
       <Route component={NotFound} />
       </Switch>
