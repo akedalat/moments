@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 import { Form} from 'semantic-ui-react'
 import './AddImage.css'
 
-const CLOUDINARY_UPLOAD_PRESET = 'ygp7mkyu'
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dacf1ygqh/image/upload'
+const CLOUDINARY_UPLOAD_PRESET = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
+const CLOUDINARY_UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
 
     class AddImage extends React.Component{
 
