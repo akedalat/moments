@@ -29,7 +29,6 @@ class EditProfile extends React.Component{
             name: this.state.name,
             email: this.state.email  
         } 
-        console.log("User: ", user)
         this.props.editCurrentUser(user)
         this.setState({
         uploadedFileCloudinaryUrl: ""})
@@ -37,6 +36,11 @@ class EditProfile extends React.Component{
 
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
+    }
+
+    handleDeleteClick = (post) => {
+        this.props.deletePost(post.id)
+        console.log(post)
     }
 
     onImageDrop = files => {
@@ -61,7 +65,6 @@ class EditProfile extends React.Component{
     }
 
     render(){
-        console.log(this.props)
     return <React.Fragment>
     <article className="Profile-container" ref="Post">   
         <header className="Header">
@@ -84,15 +87,14 @@ class EditProfile extends React.Component{
         <Grid>
         <Grid.Row className="Grid-row" columns={3}>
             {this.props.currentUser.posts.map((post, index) => {
-            return <Grid.Column key={index}><Image src={post.image}/><Icon name="delete"/></Grid.Column>})}  
+            return <Grid.Column key={index}><Image src={post.image}/>
+            <Icon onClick={()=>this.handleDeleteClick(post)} name="delete" color="red"/>
+            </Grid.Column>})}  
         </Grid.Row>
         </Grid>
-        
-   
 
-    <Form onSubmit={this.handleSubmit} id="Form" className="FileUpload">
-    Change your profile picture
-                <div className="Dropzone">
+        <Form onSubmit={this.handleSubmit} id="Form" className="FileUpload">
+            <div className="Dropzone">
                 <Dropzone 
                     onDrop={this.onImageDrop.bind(this)}
                     accept="image/*"
@@ -101,35 +103,34 @@ class EditProfile extends React.Component{
                         return (
                             <div {...getRootProps()} >
                             <input {...getInputProps()} />
+                            Change your profile picture
+                            <Icon name="add square" color="green"/>
                             {
-                            <p>Try dropping some files here, or click to select files to upload.</p>
+                            <p>Drop file or click to upload</p>
                             }
                             </div>
                         )
                     }}
                 </Dropzone>
-                </div>
+            </div>
 
+            <div>
+                {this.state.uploadedFileCloudinaryUrl === '' ? 'No file selected.' :
                 <div>
-                    {this.state.uploadedFileCloudinaryUrl === '' ? 'No file selected.' :
-                    <div>
-                        <p>{this.state.uploadedFile.name}</p>
-                        <img id="preview" src={this.state.uploadedFileCloudinaryUrl} />
-                    </div>}
-                </div>
-                    
-                    <Form.Field>
+                    <p>{this.state.uploadedFile.name}</p>
+                    <img id="preview" src={this.state.uploadedFileCloudinaryUrl} />
+                </div>}
+            </div>
+                <Form.Field>
                     <label>Name</label>
                     <input onChange={this.handleChange} placeholder='Name' name='name' value={this.state.name} />
-                    </Form.Field>
-                    <Form.Field>
+                </Form.Field>
+                <Form.Field>
                     <label>Email</label>
                     <input onChange={this.handleChange} placeholder='Email' name='email' value={this.state.email} />
-                    </Form.Field>
-                    <Button type='submit'>Save</Button>
-                 
-                </Form>
-
+                </Form.Field>
+                <Button type='submit'>Save</Button>
+            </Form>
         </article>;
     </React.Fragment> 
 

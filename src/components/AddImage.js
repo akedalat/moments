@@ -2,7 +2,7 @@ import React from "react";
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { toast } from 'react-toastify';
-import { Form} from 'semantic-ui-react'
+import { Form, Icon} from 'semantic-ui-react'
 import './AddImage.css'
 
 const CLOUDINARY_UPLOAD_PRESET = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET;
@@ -65,8 +65,9 @@ const CLOUDINARY_UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
                         return (
                             <div {...getRootProps()} >
                             <input {...getInputProps()} />
+                            <Icon name="add square" color="green"/>
                             {
-                            <p>Try dropping some files here, or click to select files to upload.</p>
+                            <p>Drop file or click to upload</p>
                             }
                             </div>
                         )

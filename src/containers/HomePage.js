@@ -25,6 +25,7 @@ class HomePage extends React.Component {
 
     //Sort posts chronologically and add them to state
     fetchPosts = () => {
+        this.props.updateCurrentUser()
         fetch(followingPostsUrl,{
             method: "POST",
             headers: {
@@ -157,6 +158,14 @@ class HomePage extends React.Component {
             .then(this.fetchUsers)
         }
 
+    // Delete Post
+    deletePost = (id) => {
+        fetch(`${postsUrl}/${id}`, {
+            method: "DELETE",
+        }).then(resp => resp.json())
+            .then(this.fetchPosts)
+    }
+
     //To be invoked in render()
     renderHomePage = () => {
         if (this.props.addImageClicked){
@@ -192,7 +201,8 @@ class HomePage extends React.Component {
         else if (this.state.editClicked){
             return <EditProfile
             currentUser={this.props.currentUser}
-            editCurrentUser={this.editCurrentUser}/>
+            editCurrentUser={this.editCurrentUser}
+            deletePost={this.deletePost}/>
         }
         else {
             return <PostList
