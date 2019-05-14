@@ -90,7 +90,6 @@ class App extends Component {
   }
 
   render(){
-   // console.log(this.state.currentUser)
   return <React.Fragment>
     <Header 
       currentUser={this.state.currentUser}
@@ -104,16 +103,16 @@ class App extends Component {
 
     {this.state.currentUser ?
       <Switch>
-        <Route path="/add-image" component={AddImage}/>
-      <Route path="/" render={() => <HomePage
+        
+      <Route path="/" exact render={() => <HomePage
       updateCurrentUser={this.updateCurrentUser}
       currentUserClicked={this.state.currentUserClicked}
       usersClicked={this.state.usersClicked} 
       addImageClicked={this.state.addImageClicked} 
       cancelImageClicked={this.cancelImageClicked}
       currentUser={this.state.currentUser}/>}/>
-      
-      {/* <Route path="*" render={() => <NotFound/>}/> */}
+      <Route path="/add-image" component={AddImage}/>
+      <Route component={NotFound} />
       </Switch>
     :
     <Switch>
@@ -121,7 +120,6 @@ class App extends Component {
     {...routerProps} login={this.login}/>}/>
     <Route path="/signup" render={(routerProps)=> <SignUpForm
     {...routerProps} login={this.login}/>}/>
-    {/* <Route path="*" render={() => (<Redirect to="/login" />)} />  */}
     </Switch>
     }
     </React.Fragment>

@@ -170,7 +170,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log(this.props.currentUser)
         return <React.Fragment>
             {this.renderHomePage()}
         </React.Fragment>
