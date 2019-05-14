@@ -108,7 +108,8 @@ class App extends Component {
       usersClicked={this.state.usersClicked} 
       addImageClicked={this.state.addImageClicked} 
       cancelImageClicked={this.cancelImageClicked}
-      currentUser={this.state.currentUser}/>}/>
+      currentUser={this.state.currentUser}
+      cancelCurrentUserClicked={this.cancelCurrentUserClicked}/>}/>
       <Route component={NotFound} />
       </Switch>
     :

@@ -23,6 +23,7 @@
 
 .Profile-name {
 font-family: Helvetica, 'PT Sans', sans-serif !important;
+/* font-size: 1.5vw !important; */
 color:white !important;
 } 
 
@@ -37,15 +38,38 @@ list-style-type: none;
     border-bottom: 1px solid #e6e6e6;
 }
 
-#profile-picture{
+.Grid-row {
+    padding: 5% !important;
+}
+
+.FileUpload {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 10%;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    padding: 1%;
+    align-items: center;
+}
+
+#preview {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+
+.Dropzone {
+    padding: 10%;
+    background-color: beige;
+    border-radius: 5px;
+    margin-bottom: 3%;
+}
+
+#profile-picture {
     width: 60px !important;
     height: 60px !important;
     object-fit: cover !important;
     border-radius: 50% !important; 
 }
-
-.Grid-row {
-    padding: 5% !important;
-}
-
-     

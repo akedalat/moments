@@ -23,7 +23,7 @@ class Profile extends React.Component{
         <header className="Header">
             <div>
             <Header className="Profile-name" as='h2'>
-            <Image circular src={this.props.user.avatar} />
+            <Image id="profile-picture" circular src={this.props.user.avatar} />
             {this.props.user.name}
             </Header>
             </div>

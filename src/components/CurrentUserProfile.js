@@ -4,6 +4,10 @@ import { Header, Image, Button, Grid} from 'semantic-ui-react'
 
 class CurrentUserProfile extends React.Component{
 
+    handleEditClick = () => {
+        this.props.handleEditClicked()
+    }
+
     render(){
     return <React.Fragment>
     <article className="Profile-container" ref="Post">   
@@ -11,12 +15,12 @@ class CurrentUserProfile extends React.Component{
         <header className="Header">
             <div>
             <Header className="Profile-name" as='h2'>
-            <Image circular src={this.props.currentUser.avatar} />
+            <Image id="profile-picture" circular src={this.props.currentUser.avatar} />
             {this.props.currentUser.name}
             </Header>
             </div>
             <div className="Edit">
-            <Button color='grey'>Edit Profile</Button>
+            <Button onClick={this.handleEditClick} color='grey'>Edit Profile</Button>
             </div>
         </header>
 

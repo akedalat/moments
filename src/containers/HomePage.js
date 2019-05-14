@@ -4,9 +4,9 @@ import ProfileContainer from './ProfileContainer'
 import AddImage from '../components/AddImage'
 import UserList from './UserList'
 import CurrentUserProfile from "../components/CurrentUserProfile";
+import EditProfile from "../components/EditProfile";
 
-import { Route, Switch } from "react-router-dom";
-
+//import { Route, Switch } from "react-router-dom";
 
 const followingPostsUrl = "http://localhost:3000/following_posts"
 const postsUrl = "http://localhost:3000/posts"
@@ -20,6 +20,7 @@ class HomePage extends React.Component {
         user: [],
         posts: [],
         profileClicked: false ,
+        editClicked: false
     }
 
     //Sort posts chronologically and add them to state
@@ -113,6 +114,15 @@ class HomePage extends React.Component {
         })
     }
 
+      //To render edit profile page
+      handleEditClicked = () => {
+        this.props.cancelCurrentUserClicked()
+        this.setState({
+            editClicked: true,
+            profileClicked: false
+        })
+    }
+
     // Create Follow
         createFollow = (relationship) => {
             fetch(relationshipsUrl,{
@@ -134,6 +144,19 @@ class HomePage extends React.Component {
             .then(this.fetchUsers)
     }
 
+    // Edit Current User
+    editCurrentUser = (user) => {
+        fetch(`${usersUrl}/${user.id}`, {
+            method: "PATCH",
+            headers: {
+                'Accept': 'application/json',
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        }).then(resp => resp.json())
+            .then(this.fetchUsers)
+        }
+
     //To be invoked in render()
     renderHomePage = () => {
         if (this.props.addImageClicked){
@@ -150,16 +173,28 @@ class HomePage extends React.Component {
          }
          else if (this.props.currentUserClicked){
             return <CurrentUserProfile
-            currentUser={this.props.currentUser}/>
+            currentUser={this.props.currentUser}
+            handleEditClicked={this.handleEditClicked}/>
          }
         else if (this.state.profileClicked){
+            if (this.state.user.id === this.props.currentUser.id) { 
+            return <CurrentUserProfile
+            currentUser={this.props.currentUser}
+            handleEditClicked={this.handleEditClicked}/>
+            } else {
             return <ProfileContainer
             currentUser={this.props.currentUser}
             users={this.state.users}
             user={this.state.user}
             createFollow={this.createFollow}/> 
-            
-        } else {
+            }    
+        } 
+        else if (this.state.editClicked){
+            return <EditProfile
+            currentUser={this.props.currentUser}
+            editCurrentUser={this.editCurrentUser}/>
+        }
+        else {
             return <PostList
             currentUser={this.props.currentUser}
             users={this.state.users}
@@ -172,8 +207,12 @@ class HomePage extends React.Component {
     }
 
     render() {
+        console.log("...Image clicked ",this.props.addImageClicked)
+        console.log("Users clicked ", this.props.usersClicked)
+        console.log("current user clicked ", this.props.currentUserClicked)
+        console.log("profile clicked ", this.state.profileClicked)
+        console.log("Edit clicked... ", this.state.editClicked)
         return <React.Fragment>
-            
             {this.renderHomePage()}
         </React.Fragment>
     }

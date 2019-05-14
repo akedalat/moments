@@ -19,7 +19,8 @@ class User extends React.Component{
     handleFollowClick = () => {
         let relationship = {
             follower_id: this.props.currentUser.id,
-            followed_id: this.props.user.id}
+            followed_id: this.props.user.id
+        }
         this.props.createFollow(relationship)
     }
 
@@ -35,7 +36,7 @@ class User extends React.Component{
         <header className="Header">
             <div>
             <Header className="Profile-name" as='h2'>
-            <Image circular src={this.props.user.avatar} />
+            <Image id="profile-picture" circular src={this.props.user.avatar} />
             {this.props.user.name}
             </Header>
             </div>

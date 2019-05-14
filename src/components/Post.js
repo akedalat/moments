@@ -65,7 +65,7 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
                 <header>
                     <div className="Post-user">
                     <Header onClick={this.handleProfileClick} className="Post-user-name" as='h2'>
-                    <Image circular src={this.props.post.user.avatar} />
+                    <Image id="profile-picture"circular src={this.props.post.user.avatar} />
                     {this.props.post.user.name}
                     </Header>
                     </div>
