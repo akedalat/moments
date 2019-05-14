@@ -111,7 +111,8 @@ class App extends Component {
       addImageClicked={this.state.addImageClicked} 
       cancelImageClicked={this.cancelImageClicked}
       currentUser={this.state.currentUser}/>}/>
-      <Route path="/add-image" component={AddImage}/>
+      <Route path="/add-image" render={() => <AddImage 
+      currentUser={this.state.currentUser}/>}/>
       <Route component={NotFound} />
       </Switch>
     :

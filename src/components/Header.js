@@ -33,9 +33,11 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
             {this.props.currentUser ?
             <Menu.Menu position='right'>
-            <Menu.Item onClick={this.handleImageClick}>
+            <Link to="/add-image">
+            <Menu.Item>
               <Icon name="add"/>Add Image
             </Menu.Item>
+            </Link>
             <Menu.Item onClick={this.handleUsersClick}>
               <Icon name="users"/>
             </Menu.Item>
