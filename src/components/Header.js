@@ -9,18 +9,28 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
         this.props.addImageClicked()
         this.props.cancelCurrentUserClicked()
         this.props.cancelUsersClicked()
+        this.props.cancelEditClicked()
       }
 
       handleUsersClick = () => {
         this.props.usersClicked()
         this.props.cancelCurrentUserClicked()
         this.props.cancelImageClicked()
+        this.props.cancelEditClicked()
       }
 
       handleCurrentUserClick = () => {
         this.props.currentUserClicked()
         this.props.cancelImageClicked()
         this.props.cancelUsersClicked()
+        this.props.cancelEditClicked()
+      }
+
+      handleLogoClick = () => {
+        this.props.cancelImageClicked()
+        this.props.cancelUsersClicked()
+        this.props.cancelCurrentUserClicked()
+        this.props.cancelEditClicked()
       }
 
 
@@ -28,7 +38,7 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
           return (
             <Menu className="Menu" size='massive'>
             <Link to="/">
-            <Menu.Item className="Nav-brand-name" name='MOMENTS' />
+            <Menu.Item onClick={this.handleLogoClick} className="Nav-brand-name" name='MOMENTS' />
             </Link>
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
             {this.props.currentUser ?

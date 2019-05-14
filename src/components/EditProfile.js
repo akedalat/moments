@@ -40,7 +40,6 @@ class EditProfile extends React.Component{
 
     handleDeleteClick = (post) => {
         this.props.deletePost(post.id)
-        console.log(post)
     }
 
     onImageDrop = files => {

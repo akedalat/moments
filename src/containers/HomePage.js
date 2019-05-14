@@ -20,7 +20,6 @@ class HomePage extends React.Component {
         user: [],
         posts: [],
         profileClicked: false ,
-        editClicked: false
     }
 
     //Sort posts chronologically and add them to state
@@ -118,11 +117,13 @@ class HomePage extends React.Component {
       //To render edit profile page
       handleEditClicked = () => {
         this.props.cancelCurrentUserClicked()
+        this.props.handleEditClicked()
         this.setState({
-            editClicked: true,
             profileClicked: false
         })
     }
+
+   
 
     // Create Follow
         createFollow = (relationship) => {
@@ -198,7 +199,7 @@ class HomePage extends React.Component {
             createFollow={this.createFollow}/> 
             }    
         } 
-        else if (this.state.editClicked){
+        else if (this.props.editClicked){
             return <EditProfile
             currentUser={this.props.currentUser}
             editCurrentUser={this.editCurrentUser}
@@ -217,11 +218,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log("...Image clicked ",this.props.addImageClicked)
-        console.log("Users clicked ", this.props.usersClicked)
-        console.log("current user clicked ", this.props.currentUserClicked)
-        console.log("profile clicked ", this.state.profileClicked)
-        console.log("Edit clicked... ", this.state.editClicked)
         return <React.Fragment>
             {this.renderHomePage()}
         </React.Fragment>

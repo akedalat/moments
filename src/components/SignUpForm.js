@@ -41,7 +41,6 @@ class SignupForm extends React.Component {
 	}
 
 	render(){
-		console.log("SignUp: ", this.props)
 		return (
 			<Form className="authForm" onSubmit={this.handleSubmit}>
             <Header as='h2' color='teal' textAlign='center'>

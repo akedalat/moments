@@ -7,15 +7,14 @@ import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 import { Route, Switch } from "react-router-dom";
 
-
-
 class App extends Component {
 
   state = {
     currentUser: null,
     addImageClicked: false,
     currentUserClicked: false,
-    usersClicked: false
+    usersClicked: false,
+    editClicked: false
   }
 
   currentUserClicked = () => {
@@ -36,11 +35,23 @@ class App extends Component {
 
   addImageClicked = () => {
   this.setState({addImageClicked: true})
-}
+  }
 
   cancelImageClicked = () => {
   this.setState({addImageClicked: false})
-}
+  }
+
+  handleEditClicked = () => {
+  this.setState({
+    editClicked: true
+    })
+  }
+
+  cancelEditClicked = () => {
+  this.setState({
+      editClicked: false
+   })  
+  }
 
   login = (resp) => {
     this.setState({
@@ -93,23 +104,29 @@ class App extends Component {
       currentUser={this.state.currentUser}
       logOut={this.logOut}
       addImageClicked={this.addImageClicked} 
+      cancelImageClicked={this.cancelImageClicked}
       currentUserClicked={this.currentUserClicked}
+      cancelCurrentUserClicked={this.cancelCurrentUserClicked}
       usersClicked={this.usersClicked}
       cancelUsersClicked={this.cancelUsersClicked}
-      cancelCurrentUserClicked={this.cancelCurrentUserClicked}
-      cancelImageClicked={this.cancelImageClicked}/>
+      editClicked={this.editClicked}
+      cancelEditClicked={this.cancelEditClicked}
+      />
 
     {this.state.currentUser ?
       <Switch>
-        
       <Route path="/" exact render={() => <HomePage
       updateCurrentUser={this.updateCurrentUser}
       currentUserClicked={this.state.currentUserClicked}
       usersClicked={this.state.usersClicked} 
       addImageClicked={this.state.addImageClicked} 
       cancelImageClicked={this.cancelImageClicked}
+      editClicked={this.state.editClicked}
+      handleEditClicked={this.handleEditClicked}
+      cancelEditClicked={this.cancelEditClicked}
       currentUser={this.state.currentUser}
-      cancelCurrentUserClicked={this.cancelCurrentUserClicked}/>}/>
+      cancelCurrentUserClicked={this.cancelCurrentUserClicked}
+      />}/>
       <Route component={NotFound} />
       </Switch>
     :
