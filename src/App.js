@@ -6,7 +6,7 @@ import NotFound from './components/NotFound'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import AddImage from './components/AddImage';
 
 
@@ -116,10 +116,11 @@ class App extends Component {
       </Switch>
     :
     <Switch>
-    <Route path="/login" render={(routerProps)=> <LoginForm
-    {...routerProps} login={this.login}/>}/>
-    <Route path="/signup" render={(routerProps)=> <SignUpForm
-    {...routerProps} login={this.login}/>}/>
+    <Route path="/login" render={()=> <LoginForm
+    login={this.login}/>}/>
+    <Route path="/signup" render={()=> <SignUpForm
+    login={this.login}/>}/>
+    <Route component={NotFound} />
     </Switch>
     }
     </React.Fragment>

@@ -28,7 +28,7 @@ class HomePage extends React.Component {
                 'Accept': 'application/json',
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({"id": 1}),
+            body: JSON.stringify({"id": this.props.currentUser.id}),
         }).then(resp => resp.json())
         .then(posts => {
             this.setState({posts:  posts.sort((a,b)=> {
