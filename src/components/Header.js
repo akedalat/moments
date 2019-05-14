@@ -27,7 +27,7 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
         render(){
           return (
             <Menu className="Menu" size='massive'>
-            <Link to="/home">
+            <Link to="/">
             <Menu.Item className="Nav-brand-name" name='MOMENTS' />
             </Link>
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
