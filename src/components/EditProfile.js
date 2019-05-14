@@ -29,7 +29,7 @@ class EditProfile extends React.Component{
             name: this.state.name,
             email: this.state.email  
         } 
-
+        console.log("User: ", user)
         this.props.editCurrentUser(user)
         this.setState({
         uploadedFileCloudinaryUrl: ""})
@@ -61,7 +61,7 @@ class EditProfile extends React.Component{
     }
 
     render(){
-        console.log(this.state)
+        console.log(this.props)
     return <React.Fragment>
     <article className="Profile-container" ref="Post">   
         <header className="Header">

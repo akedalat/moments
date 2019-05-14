@@ -146,7 +146,7 @@ class HomePage extends React.Component {
 
     // Edit Current User
     editCurrentUser = (user) => {
-        fetch(`${usersUrl}/${user.id}`, {
+        fetch(`${usersUrl}/${this.props.currentUser.id}`, {
             method: "PATCH",
             headers: {
                 'Accept': 'application/json',
