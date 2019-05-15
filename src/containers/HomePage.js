@@ -40,6 +40,7 @@ class HomePage extends React.Component {
                 return 0
                 })})
         })
+        
     }
    
     fetchUsers = () => {
@@ -84,6 +85,14 @@ class HomePage extends React.Component {
             .then(this.fetchPosts)
     }
 
+    // DELETE COMMENT
+    deleteComment = (comment_id, post_id) => {
+        fetch(`${postsUrl}/${post_id}/comments/${comment_id}`,{
+        method: "DELETE",
+        }).then(resp => resp.json())
+        .then(this.fetchPosts)
+    }
+
      //CREATE LIKE 
      createLike = (user_id, post_id) => {
      
@@ -121,9 +130,7 @@ class HomePage extends React.Component {
         this.setState({
             profileClicked: false
         })
-    }
-
-   
+    }   
 
     // Create Follow
         createFollow = (relationship) => {
@@ -136,6 +143,7 @@ class HomePage extends React.Component {
             body: JSON.stringify(relationship),
         }).then(resp => resp.json())
             .then(this.fetchUsers)
+            .then(this.fetchPosts)
         }
 
     // Delete Follow
@@ -144,6 +152,7 @@ class HomePage extends React.Component {
             method: "DELETE",
         }).then(resp => resp.json())
             .then(this.fetchUsers)
+            .then(this.fetchPosts)
     }
 
     // Edit Current User
@@ -157,6 +166,7 @@ class HomePage extends React.Component {
             body: JSON.stringify(user),
         }).then(resp => resp.json())
             .then(this.fetchUsers)
+            .then(this.fetchPosts)
         }
 
     // Delete Post
@@ -213,7 +223,8 @@ class HomePage extends React.Component {
             addComment={this.addComment}
             createLike={this.createLike}
             deleteLike={this.deleteLike}
-            handleProfileClicked={this.handleProfileClicked} />
+            handleProfileClicked={this.handleProfileClicked}
+            deleteComment={this.deleteComment} />
         }
     }
 

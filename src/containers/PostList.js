@@ -13,6 +13,7 @@ class PostList extends React.Component{
             createLike={this.props.createLike}
             deleteLike={this.props.deleteLike}
             currentUser={this.props.currentUser}
+            deleteComment={this.props.deleteComment}
             />})}
         </React.Fragment>
 

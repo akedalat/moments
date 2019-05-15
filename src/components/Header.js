@@ -33,13 +33,10 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
         this.props.cancelEditClicked()
       }
 
-
         render(){
           return (
             <Menu className="Menu" size='massive'>
-            <Link to="/">
             <Menu.Item onClick={this.handleLogoClick} className="Nav-brand-name" name='MOMENTS' />
-            </Link>
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
             {this.props.currentUser ?
             <Menu.Menu position='right'>

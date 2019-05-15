@@ -1,7 +1,6 @@
 import React from "react";
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { toast } from 'react-toastify';
 import { Form, Icon} from 'semantic-ui-react'
 import './AddImage.css'
 
@@ -43,7 +42,7 @@ const CLOUDINARY_UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
                                 .field('file', file)
             upload.end((err, response) => {
                 if(err){
-                    toast.error(err, {containerId: 'messages'})
+                    alert(err)
                 }
                 if(response.body.secure_url !== ''){
                     this.setState({

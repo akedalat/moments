@@ -43,8 +43,18 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
 
         renderComments = () => {
             return this.props.post.comments.map((comment,index) => { 
+                if (comment.user.id === this.props.currentUser.id){
+                    return <li key={index}><strong>{comment.user.name}</strong> {comment.content }
+                    <Icon onClick={()=>this.handleDeleteClick(comment)} name="delete" color="red"/></li>
+                } else {
                return <li key={index}><strong>{comment.user.name}</strong> {comment.content}</li>
+                }
             })
+        }
+
+        // DELETE COMMENT
+        handleDeleteClick = (comment) => {
+            this.props.deleteComment(comment.id, this.props.post.id)
         }
         
         //Create Comment
