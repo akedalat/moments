@@ -5,8 +5,10 @@
 
 .Menu {
   width: 70%;
-  margin: auto !important;
   z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 15%;
   }
 
 .Nav {
@@ -56,7 +58,6 @@
     justify-content: flex-end;
   }
 
-
   #header-profile {
     padding: 10%;
     height: 25%;
@@ -67,4 +68,25 @@
    padding: 10px;
   }
 
-  
+ 
+
+  @media only screen and (max-width: 850px) {
+    .item {
+      padding: 5px !important;
+    }
+    .Menu {
+      width: auto;
+      left: 0%;
+    }
+    #addImg {
+      display: none
+    }
+
+    #Logout {
+      font-size: 3vw;
+    }
+
+    .Nav-brand-name {
+      display: none;
+    }
+  }

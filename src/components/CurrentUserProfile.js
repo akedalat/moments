@@ -30,7 +30,11 @@ class CurrentUserProfile extends React.Component{
             <span>{this.props.currentUser.following.length} Following</span>
         </div>
         <Grid>
-        <Grid.Row className="Grid-row" columns={3}>
+        <Grid.Row className="Grid-row" id="grid-row-desktop" columns={3}>
+            {this.props.currentUser.posts.map((post, index) => {
+            return <Grid.Column key={index}><Image src={post.image}/></Grid.Column>})}  
+        </Grid.Row>
+        <Grid.Row className="Grid-row" id="grid-row-mobile" columns={1}>
             {this.props.currentUser.posts.map((post, index) => {
             return <Grid.Column key={index}><Image src={post.image}/></Grid.Column>})}  
         </Grid.Row>

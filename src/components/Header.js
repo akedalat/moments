@@ -35,13 +35,13 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
 
         render(){
           return (
-            <Menu className="Menu" size='massive'>
+            <Menu stackable className="Menu" size='massive'>
             <Menu.Item onClick={this.handleLogoClick} className="Nav-brand-name" name='MOMENTS' />
             {/* <Menu.Item> <Search className="Search"/> </Menu.Item> */}
             {this.props.currentUser ?
             <Menu.Menu position='right'>
             <Menu.Item onClick={this.handleImageClick}>
-              <Icon name="add"/>Add Image
+              <Icon name="add"/><span id='addImg'>Add Image</span>
             </Menu.Item>
             <Menu.Item onClick={this.handleUsersClick}>
               <Icon name="users"/>
@@ -50,7 +50,7 @@ import {Button, Menu, Icon} from 'semantic-ui-react'
               <Icon name="user"/>
             </Menu.Item>
               <Menu.Item>
-                <Button onClick={this.props.logOut} id="log-btn" color='teal'>Logout</Button>
+                <Button onClick={this.props.logOut} id="log-btn" color='teal'><span id="Logout">Logout</span></Button>
               </Menu.Item>
             </Menu.Menu>
             : 

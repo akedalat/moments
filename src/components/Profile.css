@@ -48,4 +48,24 @@ list-style-type: none;
     padding: 5% !important;
 }
 
+.ui.image {
+    width: 100%;
+}
+
+#grid-row-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 850px) {
+.ui.button {
+    font-size: 1rem;
+}
+#grid-row-mobile {
+    display: block;
+}
+#grid-row-desktop {
+    display: none;
+}
+
+}
      

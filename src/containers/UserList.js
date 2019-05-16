@@ -15,9 +15,7 @@ class UserList extends React.Component{
             deleteFollow={this.props.deleteFollow}
             />})}
         </React.Fragment>
-
     }
-
 }
 
 export default UserList;

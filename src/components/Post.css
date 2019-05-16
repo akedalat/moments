@@ -20,7 +20,7 @@
 
     .Post-user-name {
       font-family: Helvetica, 'PT Sans', sans-serif !important;
-      font-size: 1.5vw !important;
+      font-size: 100% !important;
     } 
 
       .Post-image-bg {
@@ -79,3 +79,11 @@
         object-fit: cover !important;
         border-radius: 50% !important; 
     }
+
+    @media only screen and (max-width: 850px) {
+    .Post {
+      width: 76%;
+      margin-right: 10px;
+      }
+    }
+  
