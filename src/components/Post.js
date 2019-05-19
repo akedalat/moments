@@ -45,7 +45,7 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
             return this.props.post.comments.map((comment,index) => { 
                 if (comment.user.id === this.props.currentUser.id){
                     return <li key={index}><strong>{comment.user.name}</strong> {comment.content }
-                    <Icon onClick={()=>this.handleDeleteClick(comment)} name="delete" color="red"/></li>
+                    <span ></span> <i onClick={()=>this.handleDeleteClick(comment)} className="fas fa-trash-alt"></i></li>
                 } else {
                return <li key={index}><strong>{comment.user.name}</strong> {comment.content}</li>
                 }
@@ -59,9 +59,11 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
         
         //Create Comment
         handlePostComment = () => {
+            if (this.state.content !== ""){
             let comment = {user_id: this.props.currentUser.id, content:this.state.content }
             this.props.addComment(comment, this.props.post.id)
             this.setState({content: ""})
+            }
         }
 
         handleChange = (e) => {
