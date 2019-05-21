@@ -11,7 +11,8 @@ const CLOUDINARY_UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
 
         state = {
             caption: "",
-            uploadedFileCloudinaryUrl: ""
+            uploadedFileCloudinaryUrl: "",
+            uploadedFile: ""
         }
         
         //Create Comment
@@ -52,7 +53,7 @@ const CLOUDINARY_UPLOAD_URL = process.env.REACT_APP_CLOUDINARY_UPLOAD_URL;
             })
         }
         
-        render() { 
+        render() {
             return(
                 <Form onSubmit={this.handleSubmit} id="Form" className="FileUpload">
                 <div className="Dropzone">
