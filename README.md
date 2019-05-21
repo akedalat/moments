@@ -10,9 +10,14 @@ To run Moments client side fowllow these instrauctons:
 3. `PORT=4000 npm start` 
 4. Open [http://localhost:4000](http://localhost:4000) to view it in the browser.
 
-## How to use?
+## Application Screenshot
+![alt text](https://github.com/akedalat/moments-desktop-client/blob/master/public/screenshop.png)
+
 ## Components Wireframe
 ![alt text](https://github.com/akedalat/moments-desktop-client/blob/master/public/wireframe.png)
 
 ## License
+[MIT License](https://github.com/akedalat/moments-desktop-client/blob/master/LICENSE)
+Copyright (c) 2019 [Kian Edalat](https://github.com/akedalat)
+
 
