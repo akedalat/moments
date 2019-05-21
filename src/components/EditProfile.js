@@ -69,7 +69,7 @@ class EditProfile extends React.Component{
         <header className="Header">
             <div>
             <Header className="Profile-name" as='h2'>
-            <Image id="profile-picture" circular src={this.props.currentUser.avatar} />
+            <Image alt = "Profile Picture" id="profile-picture" circular src={this.props.currentUser.avatar} />
             {this.props.currentUser.name}
             </Header>
             </div>
@@ -117,7 +117,7 @@ class EditProfile extends React.Component{
                 {this.state.uploadedFileCloudinaryUrl === '' ? 'No file selected.' :
                 <div>
                     <p>{this.state.uploadedFile.name}</p>
-                    <img id="preview" src={this.state.uploadedFileCloudinaryUrl} />
+                    <img alt="Uploaded Preview" id="preview" src={this.state.uploadedFileCloudinaryUrl} />
                 </div>}
             </div>
                 <Form.Field>

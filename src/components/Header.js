@@ -1,6 +1,6 @@
 import React from "react";
 import './Header.css'
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {Button, Menu, Icon} from 'semantic-ui-react'
 
     class Header extends React.Component{

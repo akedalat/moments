@@ -85,7 +85,7 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
 
                     <div className="Post-image">
                         <div className="Post-image-bg">
-                        <img alt="Image not showing for some reasons!" src={this.props.post.image} />
+                        <img alt="Post" src={this.props.post.image} />
                         </div>
                     </div>
 
