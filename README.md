@@ -10,6 +10,12 @@ To run the client side, please follow these instructions:
 3. `PORT=4000 npm start` 
 4. Open [http://localhost:4000](http://localhost:4000) to view it in the browser.
 
+## Built with
+- JavaScript
+- React
+- Semantic UI
+- Cloudinary
+
 ## Application Screenshot
 ![alt text](https://github.com/akedalat/moments-desktop-client/blob/master/public/screenshot.png)
 
