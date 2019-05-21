@@ -93,9 +93,12 @@ import { Header, Image, Button, Icon, Form} from 'semantic-ui-react'
                    {this.renderButton()}
                     </div>
 
-                    <div className="Post-caption">
+                    {this.props.post.caption ?
+                    <div className="Post-caption">   
                         <strong>{this.props.post.user.name}</strong> {this.props.post.caption}
                     </div>
+                    :
+                    null}
 
                     <div className="Comments">
                         <ul>Comments: {this.renderComments()}</ul> 
