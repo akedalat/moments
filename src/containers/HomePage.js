@@ -126,11 +126,16 @@ class HomePage extends React.Component {
       //To render edit profile page
       handleEditClicked = () => {
         this.props.cancelCurrentUserClicked()
+        this.cancelProfileCLicked()
         this.props.handleEditClicked()
+        
+    } 
+    
+    cancelProfileCLicked = () => {
         this.setState({
             profileClicked: false
         })
-    }   
+    }
 
     // Create Follow
         createFollow = (relationship) => {
