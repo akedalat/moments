@@ -53,11 +53,11 @@ class User extends React.Component{
         <Grid>
             
         <Grid.Row className="Grid-row" id="grid-row-desktop" columns={3}>
-            {this.props.currentUser.posts.map((post, index) => {
+            {this.props.user.posts.map((post, index) => {
             return <Grid.Column key={index}><Image src={post.image}/></Grid.Column>})}  
         </Grid.Row>
         <Grid.Row className="Grid-row" id="grid-row-mobile" columns={1}>
-            {this.props.currentUser.posts.map((post, index) => {
+            {this.props.user.posts.map((post, index) => {
             return <Grid.Column key={index}><Image src={post.image}/></Grid.Column>})}  
         </Grid.Row>
     

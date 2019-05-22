@@ -66,9 +66,21 @@
   #log-btn {
   font-size: 1.5vw;
    padding: 10px;
+  } 
+
+  .NF{
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 20%;
+  }
+  .NF-head{
+   text-align: center;
+   font-size: 25px;
   }
 
- 
+  .NF-body{
+    text-align: center;
+   }
 
   @media only screen and (max-width: 850px) {
     .item {
@@ -90,3 +102,5 @@
       display: none;
     }
   }
+
+
