@@ -131,7 +131,7 @@ class App extends Component {
       </Switch>
     :
     <Switch>
-    <Route path="/login" render={()=> <LoginForm
+    <Route path="/login" path="/" render={()=> <LoginForm
     login={this.login}/>}/>
     <Route path="/signup" render={()=> <SignUpForm
     login={this.login}/>}/>
