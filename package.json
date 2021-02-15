@@ -18,7 +18,7 @@
     "semantic-ui-icon": "^2.3.3",
     "semantic-ui-react": "^0.86.0",
     "superagent": "^5.0.5",
-    "yarn": "^1.15.2"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
